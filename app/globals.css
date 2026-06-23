@@ -1,0 +1,189 @@
+@import "tailwindcss";
+
+/* Toggle dark mode via a `.dark` class on <html> (set by the theme toggle). */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* ---- Design tokens (light) ------------------------------------------------ */
+:root {
+  --background: #ffffff;
+  --surface: #ffffff;
+  --surface-muted: #f1f5fd;
+  --foreground: #0f172a;
+  --muted-foreground: #5b6b8c;
+
+  --primary: #2563eb;
+  --primary-foreground: #ffffff;
+  --secondary: #6366f1;
+  --accent: #059669;
+  --accent-foreground: #ffffff;
+
+  --border: #e4ecfc;
+  --ring: #2563eb;
+  --destructive: #dc2626;
+
+  --shadow-color: 219 60% 50%;
+}
+
+/* ---- Design tokens (dark) ------------------------------------------------- */
+.dark {
+  --background: #070b18;
+  --surface: #0f1a31;
+  --surface-muted: #13203b;
+  --foreground: #e9eefb;
+  --muted-foreground: #9fb0d0;
+
+  --primary: #4f8bff;
+  --primary-foreground: #04122e;
+  --secondary: #8b93ff;
+  --accent: #10b981;
+  --accent-foreground: #042016;
+
+  --border: #233252;
+  --ring: #4f8bff;
+  --destructive: #f87171;
+
+  --shadow-color: 222 70% 4%;
+}
+
+/* ---- Map tokens into Tailwind's theme so utilities resolve them ----------- */
+@theme inline {
+  --color-background: var(--background);
+  --color-surface: var(--surface);
+  --color-surface-muted: var(--surface-muted);
+  --color-foreground: var(--foreground);
+  --color-muted-foreground: var(--muted-foreground);
+
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+
+  --color-border: var(--border);
+  --color-ring: var(--ring);
+  --color-destructive: var(--destructive);
+
+  --font-sans: "Nunito Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Nunito", "Nunito Sans", ui-sans-serif, sans-serif;
+
+  --radius-4xl: 2rem;
+
+  --shadow-soft: 0 1px 2px hsl(var(--shadow-color) / 0.06),
+    0 8px 24px -8px hsl(var(--shadow-color) / 0.12);
+  --shadow-clay: 0 2px 4px hsl(var(--shadow-color) / 0.08),
+    0 18px 40px -12px hsl(var(--shadow-color) / 0.2);
+  --shadow-glow: 0 0 0 1px hsl(var(--shadow-color) / 0.05),
+    0 20px 60px -20px var(--primary);
+
+  --animate-aurora: aurora 18s ease-in-out infinite alternate;
+  --animate-float: float 9s ease-in-out infinite;
+  --animate-marquee: marquee 40s linear infinite;
+  --animate-shimmer: shimmer 2.4s linear infinite;
+}
+
+@keyframes aurora {
+  0% {
+    transform: translate3d(0, 0, 0) rotate(0deg) scale(1);
+  }
+  50% {
+    transform: translate3d(4%, -3%, 0) rotate(8deg) scale(1.08);
+  }
+  100% {
+    transform: translate3d(-3%, 4%, 0) rotate(-6deg) scale(1.04);
+  }
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-18px);
+  }
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes shimmer {
+  from {
+    background-position: -200% 0;
+  }
+  to {
+    background-position: 200% 0;
+  }
+}
+
+/* ---- Base layer ----------------------------------------------------------- */
+@layer base {
+  * {
+    border-color: var(--border);
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background: var(--background);
+    color: var(--foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    letter-spacing: -0.02em;
+  }
+
+  ::selection {
+    background: var(--primary);
+    color: var(--primary-foreground);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+}
+
+/* Respect users who prefer reduced motion. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Utility: subtle dotted/grid backgrounds and gradient text. */
+.bg-grid {
+  background-image: radial-gradient(
+    circle at 1px 1px,
+    color-mix(in oklab, var(--foreground) 8%, transparent) 1px,
+    transparent 0
+  );
+  background-size: 28px 28px;
+}
+
+.text-gradient {
+  background: linear-gradient(120deg, var(--primary), var(--secondary) 60%, var(--accent));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
