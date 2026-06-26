@@ -1,30 +1,86 @@
+"use client";
+
+import { motion, useReducedMotion } from "motion/react";
 import { Container } from "@/components/ui/container";
 import { SectionHeading } from "@/components/ui/section-heading";
-import { StaggerGroup, StaggerItem } from "@/components/motion/stagger";
+import { ParallaxLayer } from "@/components/motion/parallax-layer";
+import { Reveal } from "@/components/motion/reveal";
+import { getIcon } from "@/components/icons/registry";
 import type { Dictionary } from "@/messages/types";
 
 export function Steps({ dict }: { dict: Dictionary }) {
   const { steps } = dict;
+  const reduce = useReducedMotion() ?? false;
+
   return (
     <section className="bg-surface-muted py-20">
       <Container>
         <SectionHeading kicker={steps.kicker} title={steps.title} subtitle={steps.subtitle} />
-        <div className="relative mt-14">
-          <div
-            className="absolute left-0 right-0 top-7 hidden h-px bg-gradient-to-r from-transparent via-border to-transparent lg:block"
-            aria-hidden
-          />
-          <StaggerGroup className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
-            {steps.items.map((step, i) => (
-              <StaggerItem key={step.title} className="relative flex flex-col items-center text-center">
-                <div className="relative z-10 mb-5 inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-[linear-gradient(135deg,var(--primary),var(--secondary))] text-xl font-extrabold text-primary-foreground shadow-clay">
-                  {i + 1}
-                </div>
-                <h3 className="font-bold">{step.title}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{step.text}</p>
-              </StaggerItem>
-            ))}
-          </StaggerGroup>
+
+        <div className="relative mx-auto mt-14 max-w-2xl">
+          {/* Vertical connector line with fill animation */}
+          <div className="absolute bottom-0 left-6 top-0 w-px bg-border lg:left-1/2">
+            <motion.div
+              className="h-full w-full bg-[linear-gradient(180deg,var(--primary),var(--secondary),var(--accent))]"
+              initial={reduce ? { scaleY: 1 } : { scaleY: 0 }}
+              whileInView={{ scaleY: 1 }}
+              viewport={{ once: true, margin: "-80px" }}
+              transition={reduce ? { duration: 0 } : { duration: 1.5, ease: "easeInOut" }}
+              style={{ transformOrigin: "top" }}
+            />
+          </div>
+
+          <div className="flex flex-col gap-10">
+            {steps.items.map((step, i) => {
+              const Icon = getIcon(step.icon);
+              const isEven = i % 2 === 0;
+
+              return (
+                <Reveal key={step.title} delay={i * 0.1} className="relative">
+                  <div className={`flex items-start gap-6 lg:gap-0 ${isEven ? "lg:flex-row" : "lg:flex-row-reverse"}`}>
+                    {/* Card */}
+                    <div className="flex-1 lg:px-8">
+                      <div className={`rounded-3xl border border-border bg-surface p-6 shadow-soft ${isEven ? "lg:text-right" : ""}`}>
+                        <div className={`mb-3 inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-primary/10 text-primary ${isEven ? "lg:ml-auto" : ""}`}>
+                          <Icon className="h-6 w-6" />
+                        </div>
+                        <h3 className="text-lg font-bold">{step.title}</h3>
+                        <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{step.text}</p>
+                      </div>
+                    </div>
+
+                    {/* Center node with number */}
+                    <div className="relative z-10 hidden shrink-0 lg:block lg:w-0">
+                      <div className="absolute left-1/2 top-6 -translate-x-1/2">
+                        <div className="flex h-12 w-12 items-center justify-center rounded-full bg-[linear-gradient(135deg,var(--primary),var(--secondary))] text-base font-extrabold text-primary-foreground shadow-clay ring-4 ring-surface-muted">
+                          {i + 1}
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Mobile number badge */}
+                    <div className="z-10 shrink-0 lg:hidden">
+                      <div className="flex h-12 w-12 items-center justify-center rounded-full bg-[linear-gradient(135deg,var(--primary),var(--secondary))] text-base font-extrabold text-primary-foreground shadow-clay ring-4 ring-surface-muted">
+                        {i + 1}
+                      </div>
+                    </div>
+
+                    {/* Parallax background number (desktop) */}
+                    <div className="hidden lg:block lg:w-1/2">
+                      <ParallaxLayer speed={-30} className="pointer-events-none">
+                        <span
+                          className={`block select-none text-[8rem] font-extrabold leading-none text-primary/5 ${isEven ? "text-right" : ""}`}
+                          aria-hidden
+                        >
+                          {String(i + 1).padStart(2, "0")}
+                        </span>
+                      </ParallaxLayer>
+                    </div>
+                  </div>
+                </Reveal>
+              );
+            })}
+          </div>
         </div>
       </Container>
     </section>

@@ -6,11 +6,15 @@ export interface NavItem {
 export interface Stat {
   value: string;
   label: string;
+  icon?: string;
+  trend?: string;
 }
 
 export interface Feature {
   title: string;
   text: string;
+  /** Optional lucide icon name (resolved via components/icons/registry). */
+  icon?: string;
 }
 
 export interface Level {
@@ -24,6 +28,7 @@ export interface FormatItem {
   title: string;
   text: string;
   tag: string;
+  features: string[];
 }
 
 export interface Teacher {
@@ -31,11 +36,22 @@ export interface Teacher {
   role: string;
   experience: string;
   photo: string;
+  /** Stable id for deep links (?teacher=ID). */
+  id?: string;
+  /** Languages the teacher speaks, e.g. ["pl","uk","ru"]. */
+  languages?: string[];
+  /** CEFR levels taught, e.g. ["A1","A2","B1"]. */
+  levels?: string[];
+  /** Specialties, e.g. ["exam","medical","business"]. */
+  specialties?: string[];
+  /** Short biography. */
+  bio?: string;
 }
 
 export interface Step {
   title: string;
   text: string;
+  icon?: string;
 }
 
 export interface Review {
@@ -49,6 +65,7 @@ export interface Review {
 export interface Faq {
   q: string;
   a: string;
+  category?: string;
 }
 
 export interface Course {
@@ -100,9 +117,16 @@ export interface Dictionary {
     business: string;
     blog: string;
     contact: string;
+    partnership: string;
     cta: string;
     themeToggle: string;
     menu: string;
+    skipToContent: string;
+    /** Announcement bar text (empty string hides the bar). */
+    announcement: string;
+    close: string;
+    megaLevels: string;
+    megaCategories: string;
   };
   hero: {
     badge: string;
@@ -113,6 +137,17 @@ export interface Dictionary {
     ctaSecondary: string;
     note: string;
     floatingCards: string[];
+    /** Teacher id (or index) to feature in the hero mockup. */
+    teacherId?: string;
+    /** Label for the video-call mockup header (e.g. "Google Meet"). */
+    meetLabel: string;
+    /** "Online" status indicator text. */
+    onlineLabel: string;
+    /** Level range badge text (e.g. "A1 → B1"). */
+    levelRange: string;
+    /** Floating side chips with counters/labels. */
+    floatingChips: string[];
+    platformsLabel: string;
   };
   stats: { items: Stat[] };
   how: { kicker: string; title: string; subtitle: string; items: Feature[] };
@@ -122,6 +157,8 @@ export interface Dictionary {
     subtitle: string;
     items: Level[];
     cta: string;
+    youAreHere: string;
+    testPrompt: string;
   };
   formats: { kicker: string; title: string; subtitle: string; items: FormatItem[] };
   why: { kicker: string; title: string; subtitle: string; items: Feature[] };
@@ -129,7 +166,7 @@ export interface Dictionary {
   teachers: Teacher[];
   steps: { kicker: string; title: string; subtitle: string; items: Step[] };
   reviews: { kicker: string; title: string; subtitle: string; items: Review[] };
-  faq: { kicker: string; title: string; subtitle: string; items: Faq[] };
+  faq: { kicker: string; title: string; subtitle: string; items: Faq[]; categories: { id: string; label: string }[]; ctaTitle: string; ctaText: string; ctaButton: string; searchPlaceholder: string };
   lead: {
     kicker: string;
     title: string;
@@ -139,6 +176,8 @@ export interface Dictionary {
     phone: string;
     message: string;
     promo: string;
+    course: string;
+    coursePh: string;
     namePh: string;
     emailPh: string;
     phonePh: string;
@@ -151,20 +190,33 @@ export interface Dictionary {
     errorText: string;
     required: string;
     invalidEmail: string;
+    consent: string;
   };
-  finalCta: { title: string; subtitle: string; primary: string; secondary: string };
+  finalCta: { title: string; subtitle: string; primary: string; secondary: string; phoneLabel: string; urgencyText: string; urgencyValue: string };
   footer: {
     tagline: string;
     columns: { title: string; links: NavItem[] }[];
     contactTitle: string;
     paymentsTitle: string;
+    /** Payment method keys; mapped to /payments/<key>.png in the footer. */
+    payments: string[];
     rights: string;
+    newsletter: {
+      title: string;
+      placeholder: string;
+      submit: string;
+      success: string;
+      invalidEmail: string;
+    };
+    backToTop: string;
   };
   contactInfo: {
     email: string;
     phone: string;
     hours: string;
     address: string;
+    whatsapp: string;
+    telegram: string;
   };
   blog: {
     title: string;
@@ -233,7 +285,7 @@ export interface Dictionary {
       ctaTitle: string;
       ctaText: string;
       ctaButton: string;
-      home: { kicker: string; title: string; text: string; button: string; points: string[] };
+      home: { kicker: string; title: string; text: string; button: string; points: string[]; progress: { label: string; value: number }[] };
     };
     legal: { privacy: LegalDoc; refund: LegalDoc; terms: LegalDoc };
   };

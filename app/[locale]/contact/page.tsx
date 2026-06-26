@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Suspense } from "react";
 import { Clock, Mail, MapPin, Phone } from "lucide-react";
 import { isLocale } from "@/lib/i18n/config";
 import { getDictionary } from "@/lib/i18n/dictionaries";
@@ -61,7 +62,9 @@ export default async function ContactPage({
           })}
         </div>
       </Container>
-      <LeadForm dict={dict} />
+      <Suspense>
+        <LeadForm locale={loc} dict={dict} />
+      </Suspense>
     </>
   );
 }

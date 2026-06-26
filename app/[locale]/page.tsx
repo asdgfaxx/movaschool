@@ -1,6 +1,8 @@
+import { Suspense } from "react";
 import { isLocale } from "@/lib/i18n/config";
 import { getDictionary } from "@/lib/i18n/dictionaries";
 import { Hero } from "@/components/sections/hero";
+import { PlatformsMarquee } from "@/components/sections/platforms-marquee";
 import { Stats } from "@/components/sections/stats";
 import { HowItWorks } from "@/components/sections/how-it-works";
 import { Levels } from "@/components/sections/levels";
@@ -26,17 +28,22 @@ export default async function HomePage({
   return (
     <>
       <Hero locale={loc} dict={dict} />
-      <Stats dict={dict} />
+      <PlatformsMarquee dict={dict} />
+      <Stats locale={loc} dict={dict} />
       <HowItWorks dict={dict} />
-      <Levels locale={loc} dict={dict} />
+      <Suspense>
+        <Levels locale={loc} dict={dict} />
+      </Suspense>
       <Formats dict={dict} />
       <BusinessTeaser locale={loc} dict={dict} />
       <WhyUs dict={dict} />
       <TeachersPreview locale={loc} dict={dict} />
       <Steps dict={dict} />
       <Reviews dict={dict} />
-      <Faq dict={dict} />
-      <LeadForm dict={dict} />
+      <Faq locale={loc} dict={dict} />
+      <Suspense>
+        <LeadForm locale={loc} dict={dict} />
+      </Suspense>
       <FinalCta locale={loc} dict={dict} />
     </>
   );

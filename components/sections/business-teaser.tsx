@@ -1,8 +1,11 @@
-import Link from "next/link";
+"use client";
+
 import { ArrowRight, BadgeCheck, Building2, Check } from "lucide-react";
 import { Container } from "@/components/ui/container";
 import { Reveal } from "@/components/motion/reveal";
-import { buttonClasses } from "@/components/ui/button";
+import { MagneticButton } from "@/components/motion/magnetic-button";
+import { ParallaxLayer } from "@/components/motion/parallax-layer";
+import { Counter } from "@/components/motion/counter";
 import type { Dictionary } from "@/messages/types";
 
 export function BusinessTeaser({ locale, dict }: { locale: string; dict: Dictionary }) {
@@ -11,7 +14,13 @@ export function BusinessTeaser({ locale, dict }: { locale: string; dict: Diction
     <section className="py-20">
       <Container>
         <Reveal>
-          <div className="grid items-center gap-10 overflow-hidden rounded-[2.5rem] border border-border bg-surface p-8 shadow-soft lg:grid-cols-2 lg:p-12">
+          <div className="relative grid items-center gap-10 overflow-hidden rounded-[2.5rem] glass-strong p-8 shadow-glow lg:grid-cols-2 lg:p-12">
+            {/* Parallax background glow */}
+            <ParallaxLayer speed={-50} className="pointer-events-none absolute inset-0 -z-10">
+              <div className="absolute -left-20 -top-20 h-72 w-72 rounded-full bg-primary/15 blur-3xl" />
+              <div className="absolute -bottom-20 -right-20 h-72 w-72 rounded-full bg-gold/10 blur-3xl" />
+            </ParallaxLayer>
+
             <div className="flex flex-col gap-5">
               <span className="inline-flex w-fit items-center gap-2 rounded-full bg-primary/10 px-3 py-1 text-xs font-bold uppercase tracking-[0.18em] text-primary">
                 <Building2 className="h-4 w-4" />
@@ -26,15 +35,14 @@ export function BusinessTeaser({ locale, dict }: { locale: string; dict: Diction
                   </li>
                 ))}
               </ul>
-              <Link href={`/${locale}/business`} className={buttonClasses({ size: "lg", className: "mt-1 w-fit" })}>
+              <MagneticButton href={`/${locale}/business`} size="lg" className="mt-1 w-fit">
                 {b.button}
                 <ArrowRight className="h-5 w-5" />
-              </Link>
+              </MagneticButton>
             </div>
 
             <div className="relative">
-              <div className="absolute -inset-4 -z-10 rounded-[2rem] bg-[linear-gradient(140deg,var(--primary),var(--secondary))] opacity-15 blur-2xl" />
-              <div className="rounded-[1.75rem] border border-border bg-background p-6 shadow-clay">
+              <div className="rounded-[1.75rem] border border-border bg-background/80 p-6 shadow-clay backdrop-blur">
                 <div className="flex items-center justify-between">
                   <p className="text-sm font-bold">{dict.pages.business.processTitle}</p>
                   <span className="inline-flex items-center gap-1 rounded-full bg-accent/10 px-2.5 py-1 text-xs font-bold text-accent">
@@ -42,19 +50,15 @@ export function BusinessTeaser({ locale, dict }: { locale: string; dict: Diction
                   </span>
                 </div>
                 <div className="mt-5 flex flex-col gap-4">
-                  {[
-                    { label: "IT / Dev", value: 82 },
-                    { label: "Produkcja", value: 68 },
-                    { label: "Logistyka", value: 91 },
-                  ].map((row) => (
+                  {b.progress.map((row) => (
                     <div key={row.label}>
                       <div className="mb-1 flex justify-between text-xs font-semibold text-muted-foreground">
                         <span>{row.label}</span>
-                        <span>{row.value}%</span>
+                        <Counter value={`${row.value}%`} locale={locale} />
                       </div>
-                      <div className="h-2 w-full overflow-hidden rounded-full bg-surface-muted">
+                      <div className="h-2.5 w-full overflow-hidden rounded-full bg-surface-muted">
                         <div
-                          className="h-full rounded-full bg-[linear-gradient(90deg,var(--primary),var(--secondary))]"
+                          className="animate-gradient-pan h-full rounded-full bg-[linear-gradient(90deg,var(--primary),var(--secondary),var(--primary))] bg-[length:200%_100%]"
                           style={{ width: `${row.value}%` }}
                         />
                       </div>

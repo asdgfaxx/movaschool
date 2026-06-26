@@ -8,6 +8,8 @@ import { Providers } from "@/components/providers";
 import { ThemeScript } from "@/components/layout/theme-script";
 import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
+import { ScrollProgress } from "@/components/motion/scroll-progress";
+import { CursorGlow } from "@/components/motion/cursor-glow";
 
 export function generateStaticParams() {
   return locales.map((locale) => ({ locale }));
@@ -72,14 +74,27 @@ export default async function LocaleLayout({
       </head>
       <body className="flex min-h-dvh flex-col bg-background text-foreground antialiased">
         <Providers>
+          <ScrollProgress />
+          <CursorGlow />
+          <a
+            href="#main"
+            className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-full focus:bg-primary focus:px-4 focus:py-2 focus:text-sm focus:font-semibold focus:text-primary-foreground"
+          >
+            {dict.nav.skipToContent}
+          </a>
           <Header
             locale={locale}
             items={nav}
             cta={cta}
             themeLabel={dict.nav.themeToggle}
             menuLabel={dict.nav.menu}
+            announcement={dict.nav.announcement}
+            coursesGroups={dict.pages.courses.groups}
+            closeLabel={dict.nav.close}
+            megaLevelsLabel={dict.nav.megaLevels}
+            megaCategoriesLabel={dict.nav.megaCategories}
           />
-          <main className="flex-1">{children}</main>
+          <main id="main" className="flex-1">{children}</main>
           <Footer locale={locale} dict={dict} />
         </Providers>
       </body>

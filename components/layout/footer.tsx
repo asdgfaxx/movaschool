@@ -4,20 +4,17 @@ import { Clock, Mail, Phone } from "lucide-react";
 import { Instagram, TikTok, Telegram, Youtube } from "@/components/icons/social";
 import { Logo } from "./logo";
 import { Container } from "@/components/ui/container";
+import { NewsletterForm } from "./newsletter-form";
+import { BackToTop } from "./back-to-top";
+import { SOCIAL } from "@/lib/site";
 import type { Dictionary } from "@/messages/types";
 
-const PAYMENTS = [
-  "apple-pay",
-  "google-pay",
-  "visa",
-  "mastercard",
-  "przelewy24",
-  "blik",
-  "pay-u",
-  "stripe",
-  "discover",
-  "american-express",
-];
+const SOCIAL_LINKS = [
+  { icon: Instagram, href: SOCIAL.instagram, label: "Instagram" },
+  { icon: Youtube, href: SOCIAL.youtube, label: "YouTube" },
+  { icon: TikTok, href: SOCIAL.tiktok, label: "TikTok" },
+  { icon: Telegram, href: SOCIAL.telegram, label: "Telegram" },
+] as const;
 
 export function Footer({ locale, dict }: { locale: string; dict: Dictionary }) {
   const { footer, contactInfo } = dict;
@@ -30,13 +27,15 @@ export function Footer({ locale, dict }: { locale: string; dict: Dictionary }) {
           <div className="flex flex-col gap-4">
             <Logo locale={locale} />
             <p className="max-w-xs text-sm text-muted-foreground">{footer.tagline}</p>
+            <NewsletterForm
+              title={footer.newsletter.title}
+              placeholder={footer.newsletter.placeholder}
+              submit={footer.newsletter.submit}
+              success={footer.newsletter.success}
+              invalidEmail={footer.newsletter.invalidEmail}
+            />
             <div className="flex gap-2">
-              {[
-                { icon: Instagram, href: "https://instagram.com", label: "Instagram" },
-                { icon: Youtube, href: "https://youtube.com", label: "YouTube" },
-                { icon: TikTok, href: "https://tiktok.com", label: "TikTok" },
-                { icon: Telegram, href: "https://t.me", label: "Telegram" },
-              ].map(({ icon: Icon, href, label }) => (
+              {SOCIAL_LINKS.map(({ icon: Icon, href, label }) => (
                 <a
                   key={label}
                   href={href}
@@ -53,9 +52,7 @@ export function Footer({ locale, dict }: { locale: string; dict: Dictionary }) {
 
           {footer.columns.map((col) => (
             <div key={col.title} className="flex flex-col gap-3">
-              <h3 className="text-sm font-bold uppercase tracking-wide text-foreground">
-                {col.title}
-              </h3>
+              <h3 className="text-sm font-bold uppercase tracking-wide text-foreground">{col.title}</h3>
               <ul className="flex flex-col gap-2.5">
                 {col.links.map((link) => (
                   <li key={link.href}>
@@ -74,19 +71,11 @@ export function Footer({ locale, dict }: { locale: string; dict: Dictionary }) {
 
         <div className="mt-12 grid gap-8 border-t border-border pt-8 md:grid-cols-2">
           <div className="flex flex-col gap-2.5">
-            <h3 className="text-sm font-bold uppercase tracking-wide text-foreground">
-              {footer.contactTitle}
-            </h3>
-            <a
-              href={`mailto:${contactInfo.email}`}
-              className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-primary"
-            >
+            <h3 className="text-sm font-bold uppercase tracking-wide text-foreground">{footer.contactTitle}</h3>
+            <a href={`mailto:${contactInfo.email}`} className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-primary">
               <Mail className="h-4 w-4" /> {contactInfo.email}
             </a>
-            <a
-              href={`tel:${contactInfo.phone.replace(/\s/g, "")}`}
-              className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-primary"
-            >
+            <a href={`tel:${contactInfo.phone.replace(/\s/g, "")}`} className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-primary">
               <Phone className="h-4 w-4" /> {contactInfo.phone}
             </a>
             <span className="inline-flex items-center gap-2 text-sm text-muted-foreground">
@@ -95,22 +84,11 @@ export function Footer({ locale, dict }: { locale: string; dict: Dictionary }) {
           </div>
 
           <div className="flex flex-col gap-3 md:items-end">
-            <h3 className="text-sm font-bold uppercase tracking-wide text-foreground">
-              {footer.paymentsTitle}
-            </h3>
+            <h3 className="text-sm font-bold uppercase tracking-wide text-foreground">{footer.paymentsTitle}</h3>
             <div className="flex flex-wrap gap-2 md:justify-end">
-              {PAYMENTS.map((p) => (
-                <span
-                  key={p}
-                  className="inline-flex h-8 w-12 items-center justify-center rounded-md bg-white p-1 ring-1 ring-border"
-                >
-                  <Image
-                    src={`/payments/${p}.png`}
-                    alt={p}
-                    width={40}
-                    height={24}
-                    className="h-auto w-full object-contain"
-                  />
+              {footer.payments.map((p) => (
+                <span key={p} className="inline-flex h-8 w-12 items-center justify-center rounded-md bg-white p-1 ring-1 ring-border">
+                  <Image src={`/payments/${p}.png`} alt={p} width={40} height={24} className="h-auto w-full object-contain" />
                 </span>
               ))}
             </div>
@@ -121,6 +99,8 @@ export function Footer({ locale, dict }: { locale: string; dict: Dictionary }) {
           © {year} MOVASchool. {footer.rights}
         </p>
       </Container>
+
+      <BackToTop label={footer.backToTop} />
     </footer>
   );
 }

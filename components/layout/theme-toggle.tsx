@@ -1,21 +1,22 @@
 "use client";
 
 import { Moon, Sun } from "lucide-react";
-import { useEffect, useState } from "react";
 
+const STORAGE_KEY = "theme";
+
+/**
+ * Theme toggle. The displayed icon is driven by CSS (the `.dark` class on
+ * <html>), so no state read-back or effect is needed: Moon shows in light,
+ * Sun shows in dark. The ThemeScript sets the class before paint and honours
+ * `prefers-color-scheme` as a fallback when localStorage is empty.
+ */
 export function ThemeToggle({ label }: { label: string }) {
-  const [dark, setDark] = useState(false);
-
-  useEffect(() => {
-    setDark(document.documentElement.classList.contains("dark"));
-  }, []);
-
   function toggle() {
-    const next = !dark;
-    setDark(next);
-    document.documentElement.classList.toggle("dark", next);
+    const root = document.documentElement;
+    const next = !root.classList.contains("dark");
+    root.classList.toggle("dark", next);
     try {
-      localStorage.setItem("theme", next ? "dark" : "light");
+      localStorage.setItem(STORAGE_KEY, next ? "dark" : "light");
     } catch {}
   }
 
@@ -26,7 +27,8 @@ export function ThemeToggle({ label }: { label: string }) {
       aria-label={label}
       className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-border bg-surface/60 text-foreground backdrop-blur transition-colors hover:text-primary"
     >
-      {dark ? <Sun className="h-[18px] w-[18px]" /> : <Moon className="h-[18px] w-[18px]" />}
+      <Sun className="hidden h-[18px] w-[18px] dark:inline" />
+      <Moon className="inline h-[18px] w-[18px] dark:hidden" />
     </button>
   );
 }
