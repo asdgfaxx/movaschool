@@ -26,7 +26,7 @@ export default async function LevelTestPage({
   return (
     <>
       <PageHeader kicker={dict.nav.levelTest} title={dict.pages.levelTest.title} />
-      <LevelQuiz data={dict.pages.levelTest} locale={loc} />
+      <LevelQuiz data={dict.pages.levelTest} locale={loc} dict={dict} />
     </>
   );
 }

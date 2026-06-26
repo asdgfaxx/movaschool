@@ -1,27 +1,21 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import {
-  BadgeCheck,
-  BarChart3,
-  Briefcase,
-  CalendarClock,
-  Check,
-  Globe,
-  Headset,
-  Receipt,
-} from "lucide-react";
+import { BadgeCheck, Check, ArrowRight } from "lucide-react";
 import { isLocale } from "@/lib/i18n/config";
 import { getDictionary } from "@/lib/i18n/dictionaries";
 import { PageHeader } from "@/components/sections/page-header";
 import { Container } from "@/components/ui/container";
 import { SectionHeading } from "@/components/ui/section-heading";
+import { StatTile } from "@/components/ui/stat-tile";
+import { Accordion } from "@/components/ui/accordion";
 import { StaggerGroup, StaggerItem } from "@/components/motion/stagger";
 import { Reveal } from "@/components/motion/reveal";
-import { Counter } from "@/components/motion/counter";
-import { buttonClasses } from "@/components/ui/button";
+import { SpotlightCard } from "@/components/motion/spotlight-card";
+import { ParallaxLayer } from "@/components/motion/parallax-layer";
+import { MagneticButton } from "@/components/motion/magnetic-button";
+import { getIcon } from "@/components/icons/registry";
 import { cn } from "@/lib/utils";
-
-const BENEFIT_ICONS = [Receipt, BarChart3, Briefcase, CalendarClock, Globe, Headset];
+import type { Dictionary } from "@/messages/types";
 
 export async function generateMetadata({
   params,
@@ -45,46 +39,76 @@ export default async function BusinessPage({
 
   return (
     <>
-      <PageHeader kicker={dict.nav.business} title={b.title} subtitle={b.subtitle} />
+      {/* Premium hero with gold aurora */}
+      <section className="mesh-bg relative overflow-hidden pb-12 pt-32 lg:pt-40">
+        <ParallaxLayer speed={-60} className="pointer-events-none absolute inset-0 -z-10">
+          <div className="animate-aurora absolute -left-20 -top-20 h-72 w-72 rounded-full bg-gold/20 blur-3xl" />
+          <div className="animate-float absolute -right-10 top-10 h-64 w-64 rounded-full bg-primary/20 blur-3xl" />
+        </ParallaxLayer>
+        <Container className="relative text-center">
+          <Reveal>
+            <span className="glass inline-flex items-center gap-2 rounded-full px-4 py-1.5 text-xs font-bold uppercase tracking-[0.18em] text-gold">
+              <BadgeCheck className="h-4 w-4" />
+              {b.badge}
+            </span>
+          </Reveal>
+          <Reveal delay={0.05}>
+            <h1 className="mt-3 text-4xl font-extrabold leading-[1.1] text-balance sm:text-5xl">{b.title}</h1>
+          </Reveal>
+          <Reveal delay={0.1}>
+            <p className="mx-auto mt-4 max-w-2xl text-lg text-muted-foreground">{b.subtitle}</p>
+          </Reveal>
+        </Container>
+      </section>
 
-      <Container>
+      {/* Intro glass panel */}
+      <Container className="pb-4">
         <Reveal>
-          <p className="mx-auto max-w-2xl text-center text-base text-muted-foreground">{b.intro}</p>
+          <div className="glass-strong mx-auto max-w-3xl rounded-[2rem] p-8 text-center shadow-float">
+            <p className="text-base text-muted-foreground">{b.intro}</p>
+          </div>
         </Reveal>
       </Container>
 
-      {/* Benefits */}
+      {/* Benefits bento-grid */}
       <Container className="mt-12">
-        <StaggerGroup className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        <StaggerGroup className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {b.benefits.map((item, i) => {
-            const Icon = BENEFIT_ICONS[i % BENEFIT_ICONS.length];
+            const Icon = getIcon(item.icon);
             return (
               <StaggerItem key={item.title}>
-                <div className="flex h-full gap-4 rounded-3xl border border-border bg-surface p-6 shadow-soft transition-all duration-300 hover:-translate-y-1 hover:shadow-clay">
-                  <span className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-primary/10 text-primary">
+                <SpotlightCard className="flex h-full gap-4 rounded-3xl border border-border bg-surface p-6 shadow-soft transition-shadow duration-300 hover:shadow-clay">
+                  <span className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-gold/10 text-gold">
                     <Icon className="h-5 w-5" />
                   </span>
                   <div>
                     <h3 className="font-bold">{item.title}</h3>
                     <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground">{item.text}</p>
                   </div>
-                </div>
+                </SpotlightCard>
               </StaggerItem>
             );
           })}
         </StaggerGroup>
       </Container>
 
-      {/* Stats */}
+      {/* Stats on StatTile */}
       <Container className="mt-16">
         <Reveal>
-          <div className="grid grid-cols-1 gap-6 rounded-[2rem] border border-border bg-surface p-8 shadow-soft sm:grid-cols-3 md:p-10">
-            {b.stats.map((s) => (
-              <div key={s.label} className="text-center">
-                <Counter value={s.value} className="text-gradient block text-4xl font-extrabold sm:text-5xl" />
-                <p className="mt-2 text-sm text-muted-foreground">{s.label}</p>
-              </div>
-            ))}
+          <div className="glass-strong grid grid-cols-1 gap-4 rounded-[2rem] p-6 shadow-float sm:grid-cols-3 md:p-8">
+            {b.stats.map((s) => {
+              const Icon = getIcon(s.icon);
+              return (
+                <StatTile
+                  key={s.label}
+                  icon={Icon}
+                  value={s.value}
+                  label={s.label}
+                  locale={loc}
+                  className="border-0 bg-transparent shadow-none backdrop-blur-none"
+                />
+              );
+            })}
           </div>
         </Reveal>
       </Container>
@@ -99,7 +123,7 @@ export default async function BusinessPage({
                 <div
                   className={cn(
                     "relative flex h-full flex-col gap-5 rounded-3xl border bg-surface p-7 shadow-soft transition-all duration-300 hover:-translate-y-1 hover:shadow-clay",
-                    pkg.highlighted ? "border-primary ring-2 ring-primary/30" : "border-border",
+                    pkg.highlighted ? "border-primary ring-2 ring-primary/30 shadow-clay" : "border-border",
                   )}
                 >
                   {pkg.badge && (
@@ -111,6 +135,7 @@ export default async function BusinessPage({
                     <h3 className="text-xl font-extrabold">{pkg.name}</h3>
                     <p className="mt-1 text-sm text-muted-foreground">{pkg.tagline}</p>
                   </div>
+                  <p className="text-2xl font-extrabold text-primary">{pkg.price}</p>
                   <ul className="flex flex-1 flex-col gap-2.5">
                     {pkg.features.map((f) => (
                       <li key={f} className="flex items-start gap-2 text-sm">
@@ -119,16 +144,38 @@ export default async function BusinessPage({
                     ))}
                   </ul>
                   <Link
-                    href={`/${loc}/contact`}
-                    className={buttonClasses({
-                      variant: pkg.highlighted ? "primary" : "outline",
-                      size: "md",
-                      className: "w-full",
-                    })}
+                    href={`/${loc}/contact?type=business`}
+                    className={cn(
+                      "inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-semibold transition-all",
+                      pkg.highlighted
+                        ? "bg-[linear-gradient(110deg,var(--primary),var(--secondary))] text-primary-foreground shadow-soft hover:shadow-clay"
+                        : "border border-border bg-surface text-foreground hover:border-primary hover:text-primary",
+                    )}
                   >
                     {b.packageCta}
+                    <ArrowRight className="h-4 w-4" />
                   </Link>
                 </div>
+              </StaggerItem>
+            ))}
+          </StaggerGroup>
+        </Container>
+      </section>
+
+      {/* Cases */}
+      <section className="mt-20">
+        <Container>
+          <SectionHeading title={b.casesTitle} />
+          <StaggerGroup className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            {b.cases.map((c) => (
+              <StaggerItem key={c.title}>
+                <SpotlightCard className="flex h-full flex-col gap-3 rounded-3xl border border-border bg-surface p-6 shadow-soft">
+                  <h3 className="font-bold">{c.title}</h3>
+                  <p className="flex-1 text-sm leading-relaxed text-muted-foreground">{c.text}</p>
+                  <div className="rounded-2xl bg-accent/10 px-4 py-2 text-sm font-bold text-accent">
+                    {c.result}
+                  </div>
+                </SpotlightCard>
               </StaggerItem>
             ))}
           </StaggerGroup>
@@ -140,21 +187,34 @@ export default async function BusinessPage({
         <Container>
           <SectionHeading title={b.processTitle} />
           <div className="relative mt-12">
-            <div
-              className="absolute left-0 right-0 top-7 hidden h-px bg-gradient-to-r from-transparent via-border to-transparent lg:block"
-              aria-hidden
-            />
+            <div className="absolute left-0 right-0 top-7 hidden h-px bg-gradient-to-r from-transparent via-border to-transparent lg:block" aria-hidden />
             <StaggerGroup className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
-              {b.process.map((step, i) => (
-                <StaggerItem key={step.title} className="relative flex flex-col items-center text-center">
-                  <div className="relative z-10 mb-5 inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-[linear-gradient(135deg,var(--primary),var(--secondary))] text-xl font-extrabold text-primary-foreground shadow-clay">
-                    {i + 1}
-                  </div>
-                  <h3 className="font-bold">{step.title}</h3>
-                  <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{step.text}</p>
-                </StaggerItem>
-              ))}
+              {b.process.map((step, i) => {
+                const Icon = getIcon(step.icon);
+                return (
+                  <StaggerItem key={step.title} className="relative flex flex-col items-center text-center">
+                    <div className="relative z-10 mb-5 inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-[linear-gradient(135deg,var(--primary),var(--gold))] text-xl font-extrabold text-primary-foreground shadow-clay">
+                      {i + 1}
+                    </div>
+                    <div className="mb-2 inline-flex h-8 w-8 items-center justify-center rounded-lg bg-gold/10 text-gold">
+                      <Icon className="h-4 w-4" />
+                    </div>
+                    <h3 className="font-bold">{step.title}</h3>
+                    <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{step.text}</p>
+                  </StaggerItem>
+                );
+              })}
             </StaggerGroup>
+          </div>
+        </Container>
+      </section>
+
+      {/* FAQ */}
+      <section className="mt-20">
+        <Container width="narrow">
+          <SectionHeading title={b.faqTitle} />
+          <div className="mt-8">
+            <Accordion items={b.faq} defaultOpen={0} />
           </div>
         </Container>
       </section>
@@ -163,21 +223,21 @@ export default async function BusinessPage({
       <section className="py-20">
         <Container>
           <Reveal>
-            <div className="relative overflow-hidden rounded-[2.5rem] bg-[linear-gradient(130deg,var(--primary),var(--secondary))] px-8 py-16 text-center shadow-clay sm:px-16">
-              <div className="absolute -left-16 -top-16 h-64 w-64 rounded-full bg-white/15 blur-2xl" aria-hidden />
-              <div className="absolute -bottom-20 -right-10 h-72 w-72 rounded-full bg-accent/30 blur-3xl" aria-hidden />
-              <div className="relative mx-auto max-w-2xl text-primary-foreground">
-                <span className="inline-flex items-center gap-2 rounded-full bg-white/15 px-3 py-1 text-xs font-bold backdrop-blur">
-                  <BadgeCheck className="h-4 w-4" /> B2B
+            <div className="mesh-bg relative overflow-hidden rounded-[2.5rem] border border-border px-8 py-16 text-center shadow-glow sm:px-16">
+              <ParallaxLayer speed={-80} className="pointer-events-none absolute inset-0 -z-10">
+                <div className="animate-blob absolute -left-16 -top-16 h-64 w-64 rounded-full bg-gold/20 blur-3xl" />
+              </ParallaxLayer>
+              <div className="relative mx-auto max-w-2xl">
+                <span className="inline-flex items-center gap-2 rounded-full bg-gold/15 px-3 py-1 text-xs font-bold text-gold">
+                  <BadgeCheck className="h-4 w-4" /> {b.badge}
                 </span>
-                <h2 className="mt-4 text-3xl font-extrabold text-balance sm:text-4xl">{b.ctaTitle}</h2>
-                <p className="mx-auto mt-4 max-w-xl text-lg text-white/85">{b.ctaText}</p>
-                <Link
-                  href={`/${loc}/contact`}
-                  className={buttonClasses({ variant: "white", size: "lg", className: "mt-8" })}
-                >
-                  {b.ctaButton}
-                </Link>
+                <h2 className="mt-4 text-3xl font-extrabold text-balance text-foreground sm:text-4xl">{b.ctaTitle}</h2>
+                <p className="mx-auto mt-4 max-w-xl text-lg text-muted-foreground">{b.ctaText}</p>
+                <div className="mt-8">
+                  <MagneticButton href={`/${loc}/contact?type=business`} size="lg">
+                    {b.ctaButton}
+                  </MagneticButton>
+                </div>
               </div>
             </div>
           </Reveal>

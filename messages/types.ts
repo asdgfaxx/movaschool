@@ -69,11 +69,14 @@ export interface Faq {
 }
 
 export interface Course {
+  id?: string;
   name: string;
   level: string;
   freq: string;
   duration: string;
   price: string;
+  icon?: string;
+  syllabus?: string[];
 }
 
 export interface CourseGroup {
@@ -100,6 +103,7 @@ export interface QuizResult {
   title: string;
   text: string;
   recommend: string;
+  recommendedCourses?: string[];
 }
 
 export interface LegalDoc {
@@ -239,6 +243,15 @@ export interface Dictionary {
       headDuration: string;
       headPrice: string;
       cta: string;
+      filterLevel: string;
+      filterCategory: string;
+      filterReset: string;
+      resultsCount: string;
+      viewGrid: string;
+      viewTable: string;
+      notFoundTitle: string;
+      notFoundText: string;
+      notFoundCta: string;
     };
     teachers: { title: string; subtitle: string };
     levelTest: {
@@ -253,6 +266,17 @@ export interface Dictionary {
       resultLead: string;
       recommendLabel: string;
       goCourses: string;
+      timerLabel: string;
+      audioLabel: string;
+      audioSoon: string;
+      shareLabel: string;
+      shareCopied: string;
+      leadTitle: string;
+      leadText: string;
+      leadName: string;
+      leadEmail: string;
+      leadSubmit: string;
+      leadSuccess: string;
       questions: QuizQuestion[];
       results: QuizResult[];
     };
@@ -269,11 +293,13 @@ export interface Dictionary {
       title: string;
       subtitle: string;
       intro: string;
+      badge: string;
       benefits: Feature[];
       packagesTitle: string;
       packages: {
         name: string;
         tagline: string;
+        price: string;
         features: string[];
         highlighted: boolean;
         badge?: string;
@@ -282,6 +308,10 @@ export interface Dictionary {
       processTitle: string;
       process: Step[];
       stats: Stat[];
+      casesTitle: string;
+      cases: { title: string; text: string; result: string }[];
+      faqTitle: string;
+      faq: Faq[];
       ctaTitle: string;
       ctaText: string;
       ctaButton: string;

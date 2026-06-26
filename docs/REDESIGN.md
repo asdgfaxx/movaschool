@@ -419,11 +419,11 @@
 - Использовать существующие `headCourse/headFreq/headDuration/headPrice` в таблице.
 
 ### Чек-лист
-- [ ] `[CO1]` Уникальный hero с chips-фильтром
-- [ ] `[CO1]` Sticky filter bar (уровень/категория/формат)
-- [ ] `[CO2]` Mega-grid на SpotlightCard+tilt, hover-раскрытие syllabus
-- [ ] `[CO2]` CTA с `?course=ID`
-- [ ] `[CO2]` Сравнительная таблица (toggle вид), `head*` из dict
+- [x] `[CO1]` Уникальный hero с chips-фильтром
+- [x] `[CO1]` Sticky filter bar (уровень/категория/формат)
+- [x] `[CO2]` Mega-grid на SpotlightCard+tilt, hover-раскрытие syllabus
+- [x] `[CO2]` CTA с `?course=ID`
+- [x] `[CO2]` Сравнительная таблица (toggle вид), `head*` из dict
 
 ## 2.2 Teachers — `/[locale]/teachers`
 
@@ -442,9 +442,9 @@
 - Расширить `dict.teachers[]`: `id`, `languages[]`, `levels[]`, `specialties[]`, `bio`.
 
 ### Чек-лист
-- [ ] `[TE1]` Hero с parallax-коллажем, filter bar (язык/уровень/специальность)
-- [ ] `[TE1]` Расширить `dict.teachers[]` (id/languages/levels/specialties/bio)
-- [ ] `[TE2]` Bento-grid на SpotlightCard+tilt, TagChip предметов, CTA с `?teacher=ID`
+- [x] `[TE1]` Hero с parallax-коллажем, filter bar (язык/уровень/специальность)
+- [x] `[TE1]` Расширить `dict.teachers[]` (id/languages/levels/specialties/bio)
+- [x] `[TE2]` Bento-grid на SpotlightCard+tilt, TagChip предметов, CTA с `?teacher=ID`
 - [ ] `[TE2]` (опц.) Детальные страницы `teachers/[id]`
 
 ## 2.3 Level Test — `/[locale]/level-test`
@@ -463,9 +463,9 @@
 - Расширить `dict.pages.levelTest`: `question.audio?` (placeholder), result `recommendedCourses[]`.
 
 ### Чек-лист
-- [ ] `[LT1]` Hero с ProgressRing-превью, gradient-mesh
-- [ ] `[LT1]` Quiz: ProgressRing, аудио-плейсхолдер, spring-переходы, таймер
-- [ ] `[LT2]` Result: рекомендация курсов, lead-capture форма, share
+- [x] `[LT1]` Hero с ProgressRing-превью, gradient-mesh
+- [x] `[LT1]` Quiz: ProgressRing, аудио-плейсхолдер, spring-переходы, таймер
+- [x] `[LT2]` Result: рекомендация курсов, lead-capture форма, share
 
 ## 2.4 Business — `/[locale]/business`
 
@@ -489,11 +489,11 @@
 - `dict.pages.business`: `packages[].price`, `cases[]`, `faq[]`, `benefits[].icon`, убрать хардкод «B2B».
 
 ### Чек-лист
-- [ ] `[BU1]` Premium hero (gold aurora, mesh), badge из dict
-- [ ] `[BU1]` Benefits bento-grid с semantic иконками
-- [ ] `[BU2]` Stats на StatTile (дроби), packages с ценами + «популярный»
-- [ ] `[BU2]` Process timeline, кейсы, FAQ
-- [ ] `[BU2]` CTA gradient-mesh, убрать хардкод «B2B»
+- [x] `[BU1]` Premium hero (gold aurora, mesh), badge из dict
+- [x] `[BU1]` Benefits bento-grid с semantic иконками
+- [x] `[BU2]` Stats на StatTile (дроби), packages с ценами + «популярный»
+- [x] `[BU2]` Process timeline, кейсы, FAQ
+- [x] `[BU2]` CTA gradient-mesh, убрать хардкод «B2B»
 
 ## 2.5 Blog (список) — `/[locale]/blog`
 
