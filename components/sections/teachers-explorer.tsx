@@ -5,15 +5,12 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { Container } from "@/components/ui/container";
-import { SpotlightCard } from "@/components/motion/spotlight-card";
 import { TiltCard } from "@/components/motion/tilt-card";
 import { Reveal } from "@/components/motion/reveal";
 import { Pill } from "@/components/ui/pill";
-import { cn } from "@/lib/utils";
-import type { Dictionary, Teacher } from "@/messages/types";
+import type { Dictionary } from "@/messages/types";
 
 export function TeachersExplorer({ locale, dict }: { locale: string; dict: Dictionary }) {
-  const t = dict.pages.teachers;
   const [langFilter, setLangFilter] = useState("all");
   const [levelFilter, setLevelFilter] = useState("all");
   const [specFilter, setSpecFilter] = useState("all");

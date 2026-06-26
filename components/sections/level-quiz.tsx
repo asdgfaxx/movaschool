@@ -114,7 +114,7 @@ export function LevelQuiz({
 
   return (
     <Container className="max-w-2xl pb-16">
-      <div className="relative overflow-hidden rounded-[2rem] border border-border glass-strong p-6 shadow-glow sm:p-10">
+      <div className="relative overflow-hidden rounded-[1.5rem] border border-border bg-surface p-6 shadow-clay sm:p-10">
         <div className="absolute -right-20 -top-20 h-64 w-64 rounded-full bg-primary/10 blur-3xl" aria-hidden />
 
         <AnimatePresence mode="wait">

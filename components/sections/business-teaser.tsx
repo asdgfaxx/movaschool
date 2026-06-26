@@ -1,74 +1,129 @@
 "use client";
 
-import { ArrowRight, BadgeCheck, Building2, Check } from "lucide-react";
+import { ArrowRight, Building2, Check } from "lucide-react";
 import { Container } from "@/components/ui/container";
 import { Reveal } from "@/components/motion/reveal";
 import { MagneticButton } from "@/components/motion/magnetic-button";
-import { ParallaxLayer } from "@/components/motion/parallax-layer";
 import { Counter } from "@/components/motion/counter";
 import type { Dictionary } from "@/messages/types";
 
 export function BusinessTeaser({ locale, dict }: { locale: string; dict: Dictionary }) {
   const b = dict.pages.business.home;
-  return (
-    <section className="py-20">
-      <Container>
-        <Reveal>
-          <div className="relative grid items-center gap-10 overflow-hidden rounded-[2.5rem] glass-strong p-8 shadow-glow lg:grid-cols-2 lg:p-12">
-            {/* Parallax background glow */}
-            <ParallaxLayer speed={-50} className="pointer-events-none absolute inset-0 -z-10">
-              <div className="absolute -left-20 -top-20 h-72 w-72 rounded-full bg-primary/15 blur-3xl" />
-              <div className="absolute -bottom-20 -right-20 h-72 w-72 rounded-full bg-gold/10 blur-3xl" />
-            </ParallaxLayer>
 
-            <div className="flex flex-col gap-5">
-              <span className="inline-flex w-fit items-center gap-2 rounded-full bg-primary/10 px-3 py-1 text-xs font-bold uppercase tracking-[0.18em] text-primary">
-                <Building2 className="h-4 w-4" />
+  const stats = [
+    { value: "30+", label: locale === "ru" ? "компаний" : "firm" },
+    { value: "1200+", label: locale === "ru" ? "сотрудников обучено" : "pracowników przeszkolonych" },
+    { value: "4.9", label: locale === "ru" ? "оценка обучения" : "ocena szkoleń" },
+    { value: "95%", label: locale === "ru" ? "доходимости" : "frekwencji" },
+  ];
+
+  return (
+    <section className="relative overflow-hidden border-y border-border bg-surface py-20">
+      {/* Subtle gradient accent — not glass */}
+      <div className="pointer-events-none absolute inset-0" aria-hidden>
+        <div className="absolute -left-32 top-0 h-96 w-96 rounded-full bg-primary/5 blur-3xl" />
+        <div className="absolute -right-32 bottom-0 h-96 w-96 rounded-full bg-gold/5 blur-3xl" />
+      </div>
+
+      <Container className="relative">
+        <div className="grid items-start gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:gap-16">
+          {/* Left — copy */}
+          <div className="flex flex-col gap-6">
+            <Reveal>
+              <span className="inline-flex w-fit items-center gap-2 rounded-full border border-border bg-background px-3 py-1 text-xs font-bold uppercase tracking-[0.18em] text-primary">
+                <Building2 className="h-3.5 w-3.5" />
                 {b.kicker}
               </span>
-              <h2 className="text-3xl font-extrabold leading-tight text-balance sm:text-4xl">{b.title}</h2>
-              <p className="max-w-md text-base text-muted-foreground sm:text-lg">{b.text}</p>
-              <ul className="grid grid-cols-1 gap-2 sm:grid-cols-2">
+            </Reveal>
+
+            <Reveal delay={0.05}>
+              <h2 className="text-3xl font-extrabold leading-[1.15] tracking-tight text-balance sm:text-4xl lg:text-[2.75rem]">
+                {b.title}
+              </h2>
+            </Reveal>
+
+            <Reveal delay={0.1}>
+              <p className="max-w-lg text-base leading-relaxed text-muted-foreground sm:text-lg">
+                {b.text}
+              </p>
+            </Reveal>
+
+            <Reveal delay={0.15}>
+              <ul className="grid grid-cols-1 gap-3 border-t border-border pt-6 sm:grid-cols-2">
                 {b.points.map((p) => (
-                  <li key={p} className="flex items-center gap-2 text-sm font-medium">
-                    <Check className="h-4 w-4 shrink-0 text-accent" /> {p}
+                  <li key={p} className="flex items-center gap-2.5 text-sm font-medium">
+                    <span className="inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-accent/12">
+                      <Check className="h-3 w-3 text-accent" />
+                    </span>
+                    {p}
                   </li>
                 ))}
               </ul>
-              <MagneticButton href={`/${locale}/business`} size="lg" className="mt-1 w-fit">
+            </Reveal>
+
+            <Reveal delay={0.2}>
+              <MagneticButton href={`/${locale}/business`} size="lg" className="mt-2 w-fit">
                 {b.button}
                 <ArrowRight className="h-5 w-5" />
               </MagneticButton>
-            </div>
+            </Reveal>
+          </div>
 
-            <div className="relative">
-              <div className="rounded-[1.75rem] border border-border bg-background/80 p-6 shadow-clay backdrop-blur">
-                <div className="flex items-center justify-between">
-                  <p className="text-sm font-bold">{dict.pages.business.processTitle}</p>
-                  <span className="inline-flex items-center gap-1 rounded-full bg-accent/10 px-2.5 py-1 text-xs font-bold text-accent">
-                    <BadgeCheck className="h-3.5 w-3.5" /> VAT
-                  </span>
+          {/* Right — metrics dashboard */}
+          <Reveal delay={0.15}>
+            <div className="rounded-2xl border border-border bg-background p-6 shadow-soft sm:p-8">
+              <div className="mb-6 flex items-center justify-between border-b border-border pb-4">
+                <div>
+                  <p className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+                    {locale === "ru" ? "Результаты B2B" : "Wyniki B2B"}
+                  </p>
+                  <p className="mt-0.5 text-sm font-bold">{dict.pages.business.processTitle}</p>
                 </div>
-                <div className="mt-5 flex flex-col gap-4">
+                <span className="inline-flex items-center gap-1.5 rounded-full bg-accent/10 px-3 py-1 text-xs font-bold text-accent">
+                  <span className="h-1.5 w-1.5 rounded-full bg-accent" />
+                  VAT
+                </span>
+              </div>
+
+              {/* Metric grid */}
+              <div className="grid grid-cols-2 gap-px overflow-hidden rounded-xl border border-border bg-border">
+                {stats.map((s) => (
+                  <div key={s.label} className="bg-background p-5">
+                    <Counter
+                      value={s.value}
+                      locale={locale}
+                      className="block text-2xl font-extrabold tracking-tight text-foreground sm:text-3xl"
+                    />
+                    <p className="mt-1 text-xs font-medium text-muted-foreground">{s.label}</p>
+                  </div>
+                ))}
+              </div>
+
+              {/* Industry breakdown — clean, no plastic bars */}
+              <div className="mt-6">
+                <p className="mb-3 text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+                  {locale === "ru" ? "По отраслям" : "Według branż"}
+                </p>
+                <div className="flex flex-col gap-3">
                   {b.progress.map((row) => (
-                    <div key={row.label}>
-                      <div className="mb-1 flex justify-between text-xs font-semibold text-muted-foreground">
-                        <span>{row.label}</span>
-                        <Counter value={`${row.value}%`} locale={locale} />
-                      </div>
-                      <div className="h-2.5 w-full overflow-hidden rounded-full bg-surface-muted">
+                    <div key={row.label} className="flex items-center gap-3">
+                      <span className="w-28 shrink-0 text-xs font-semibold text-foreground">{row.label}</span>
+                      <div className="h-1.5 flex-1 overflow-hidden rounded-full bg-surface-muted">
                         <div
-                          className="animate-gradient-pan h-full rounded-full bg-[linear-gradient(90deg,var(--primary),var(--secondary),var(--primary))] bg-[length:200%_100%]"
+                          className="h-full rounded-full bg-foreground/70"
                           style={{ width: `${row.value}%` }}
                         />
                       </div>
+                      <span className="w-9 shrink-0 text-right text-xs font-bold tabular-nums text-muted-foreground">
+                        {row.value}%
+                      </span>
                     </div>
                   ))}
                 </div>
               </div>
             </div>
-          </div>
-        </Reveal>
+          </Reveal>
+        </div>
       </Container>
     </section>
   );

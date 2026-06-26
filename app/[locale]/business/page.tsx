@@ -3,7 +3,6 @@ import Link from "next/link";
 import { BadgeCheck, Check, ArrowRight } from "lucide-react";
 import { isLocale } from "@/lib/i18n/config";
 import { getDictionary } from "@/lib/i18n/dictionaries";
-import { PageHeader } from "@/components/sections/page-header";
 import { Container } from "@/components/ui/container";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { StatTile } from "@/components/ui/stat-tile";
@@ -15,7 +14,6 @@ import { ParallaxLayer } from "@/components/motion/parallax-layer";
 import { MagneticButton } from "@/components/motion/magnetic-button";
 import { getIcon } from "@/components/icons/registry";
 import { cn } from "@/lib/utils";
-import type { Dictionary } from "@/messages/types";
 
 export async function generateMetadata({
   params,
@@ -73,7 +71,7 @@ export default async function BusinessPage({
       {/* Benefits bento-grid */}
       <Container className="mt-12">
         <StaggerGroup className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {b.benefits.map((item, i) => {
+          {b.benefits.map((item) => {
             const Icon = getIcon(item.icon);
             return (
               <StaggerItem key={item.title}>

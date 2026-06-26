@@ -4,6 +4,8 @@ export interface BlogSection {
   heading?: string;
   paragraphs?: string[];
   list?: string[];
+  callout?: { variant: "info" | "warning" | "tip"; text: string };
+  quote?: { text: string; cite?: string };
 }
 
 export interface BlogPost {
@@ -15,6 +17,9 @@ export interface BlogPost {
   title: string;
   excerpt: string;
   body: BlogSection[];
+  tags?: string[];
+  author?: string;
+  featured?: boolean;
 }
 
 const pl: BlogPost[] = [
@@ -27,6 +32,9 @@ const pl: BlogPost[] = [
     title: "Egzamin certyfikatowy B1 z polskiego: kompletny przewodnik 2026",
     excerpt:
       "Po co Ci certyfikat B1, jak wygląda egzamin, ile trzeba zdobyć punktów i jak się skutecznie przygotować — wszystko w jednym miejscu.",
+    tags: ["B1", "egzamin", "certyfikat"],
+    author: "Pani Małgorzata",
+    featured: true,
     body: [
       {
         paragraphs: [
@@ -41,6 +49,9 @@ const pl: BlogPost[] = [
           "Karta stałego pobytu / rezydenta długoterminowego UE.",
           "Rekrutacja na studia oraz wymagania pracodawców.",
         ],
+      },
+      {
+        callout: { variant: "tip", text: "Najlepiej zapisać się na egzamin z co najmniej 3-miesięcznym wyprzedzeniem — terminy znikają szybko, zwłaszcza wiosną i jesienią." },
       },
       {
         heading: "Jak wygląda egzamin?",
@@ -247,6 +258,9 @@ const ru: BlogPost[] = [
     title: "Сертификационный экзамен B1 по польскому: полное руководство 2026",
     excerpt:
       "Зачем нужен сертификат B1, как проходит экзамен, сколько баллов нужно набрать и как эффективно подготовиться — всё в одном месте.",
+    tags: ["B1", "экзамен", "сертификат"],
+    author: "Пани Малгожата",
+    featured: true,
     body: [
       {
         paragraphs: [
@@ -261,6 +275,9 @@ const ru: BlogPost[] = [
           "Карта постоянного пребывания / долгосрочного резидента ЕС.",
           "Поступление в вуз и требования работодателей.",
         ],
+      },
+      {
+        callout: { variant: "tip", text: "Лучше всего записываться на экзамен минимум за 3 месяца — места разбирают быстро, особенно весной и осенью." },
       },
       {
         heading: "Как проходит экзамен?",

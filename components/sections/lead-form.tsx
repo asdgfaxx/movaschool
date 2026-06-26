@@ -85,10 +85,10 @@ export function LeadForm({ dict }: { locale: string; dict: Dictionary }) {
 
           <div className="relative">
             {/* Gradient glow */}
-            <div className="absolute -inset-3 -z-10 rounded-[2rem] bg-[linear-gradient(140deg,var(--primary),var(--secondary),var(--accent))] opacity-15 blur-xl" />
+            <div className="absolute -inset-2 -z-10 rounded-[2rem] bg-[linear-gradient(140deg,var(--primary),var(--secondary),var(--accent))] opacity-10 blur-2xl" />
 
             {status === "success" ? (
-              <div className="glass-strong flex flex-col items-center gap-4 rounded-[1.75rem] p-10 text-center shadow-glow">
+              <div className="flex flex-col items-center gap-4 rounded-[1.5rem] border border-border bg-surface p-10 text-center shadow-clay">
                 <span className="inline-flex h-16 w-16 items-center justify-center rounded-full bg-accent/15 text-accent">
                   <CheckCircle2 className="h-8 w-8" />
                 </span>
@@ -99,7 +99,7 @@ export function LeadForm({ dict }: { locale: string; dict: Dictionary }) {
               <form
                 onSubmit={onSubmit}
                 noValidate
-                className="glass-strong flex flex-col gap-4 rounded-[1.75rem] p-6 shadow-glow sm:p-8"
+                className="flex flex-col gap-4 rounded-[1.5rem] border border-border bg-surface p-6 shadow-clay sm:p-8"
               >
                 <div className="grid gap-4 sm:grid-cols-2">
                   <Field label={t.name} error={errors.name}>

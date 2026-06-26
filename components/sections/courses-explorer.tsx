@@ -4,7 +4,6 @@ import { useState, useMemo } from "react";
 import Link from "next/link";
 import { CalendarRange, Clock, LayoutGrid, Table as TableIcon, Search, X } from "lucide-react";
 import { Container } from "@/components/ui/container";
-import { SpotlightCard } from "@/components/motion/spotlight-card";
 import { TiltCard } from "@/components/motion/tilt-card";
 import { Reveal } from "@/components/motion/reveal";
 import { MagneticButton } from "@/components/motion/magnetic-button";

@@ -62,7 +62,7 @@ export default async function LocaleLayout({
   const cta = { label: dict.nav.cta, href: `/${locale}/contact` };
 
   return (
-    <html lang={locale} suppressHydrationWarning className="h-full">
+    <html lang={locale} suppressHydrationWarning>
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />

@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import { Star, Play } from "lucide-react";
 import { Marquee } from "@/components/motion/marquee";
 import { TiltCard } from "@/components/motion/tilt-card";
@@ -45,9 +44,9 @@ export function Reviews({ dict }: { dict: Dictionary }) {
   const row2 = reviews.items.slice(half);
 
   const platforms = [
-    { src: "/platforms/platforms-1.png", alt: "Google", href: "https://google.com" },
-    { src: "/platforms/platforms-2.png", alt: "Trustpilot", href: "https://trustpilot.com" },
-    { src: "/platforms/platforms-3.png", alt: "Facebook", href: "https://facebook.com" },
+    { name: "Google", rating: "4.9", href: "https://google.com" },
+    { name: "Trustpilot", rating: "4.8", href: "https://trustpilot.com" },
+    { name: "Facebook", rating: "5.0", href: "https://facebook.com" },
   ];
 
   return (
@@ -85,14 +84,9 @@ export function Reviews({ dict }: { dict: Dictionary }) {
           {/* Platform links */}
           <div className="flex items-center gap-6">
             {platforms.map((p) => (
-              <a key={p.alt} href={p.href} target="_blank" rel="noopener noreferrer" className="transition-opacity hover:opacity-100">
-                <Image
-                  src={p.src}
-                  alt={p.alt}
-                  width={100}
-                  height={36}
-                  className="h-7 w-auto object-contain opacity-60 grayscale transition-all duration-300 hover:opacity-100 hover:grayscale-0 dark:brightness-0 dark:invert dark:hover:brightness-100 dark:hover:invert-0"
-                />
+              <a key={p.name} href={p.href} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 transition-opacity hover:opacity-100">
+                <span className="text-sm font-bold text-foreground">{p.name}</span>
+                <span className="text-xs font-semibold text-amber-500">★ {p.rating}</span>
               </a>
             ))}
           </div>
