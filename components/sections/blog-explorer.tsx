@@ -4,7 +4,6 @@ import { useState, useMemo } from "react";
 import Link from "next/link";
 import { ArrowUpRight, Clock, Search } from "lucide-react";
 import { Container } from "@/components/ui/container";
-import { TiltCard } from "@/components/motion/tilt-card";
 import { Reveal } from "@/components/motion/reveal";
 import { BlogCover } from "@/components/blog/blog-cover";
 import { cn } from "@/lib/utils";
@@ -128,10 +127,7 @@ export function BlogExplorer({
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {filtered.filter((p) => !(!hasFilters && p === featured)).map((post, i) => (
             <Reveal key={post.slug} delay={Math.min(i * 0.04, 0.3)}>
-              <TiltCard
-                className="group h-full rounded-3xl"
-                intensity={5}
-              >
+              <div className="group h-full rounded-2xl">
                 <Link
                   href={`/${locale}/blog/${post.slug}`}
                   className="flex h-full flex-col overflow-hidden rounded-3xl border border-border bg-surface shadow-soft transition-shadow duration-300 hover:shadow-clay"
@@ -168,7 +164,7 @@ export function BlogExplorer({
                     </span>
                   </div>
                 </Link>
-              </TiltCard>
+              </div>
             </Reveal>
           ))}
         </div>

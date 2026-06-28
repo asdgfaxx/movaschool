@@ -9,7 +9,6 @@ import { ThemeScript } from "@/components/layout/theme-script";
 import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
 import { ScrollProgress } from "@/components/motion/scroll-progress";
-import { CursorGlow } from "@/components/motion/cursor-glow";
 
 export function generateStaticParams() {
   return locales.map((locale) => ({ locale }));
@@ -75,7 +74,6 @@ export default async function LocaleLayout({
       <body className="flex min-h-dvh flex-col bg-background text-foreground antialiased">
         <Providers>
           <ScrollProgress />
-          <CursorGlow />
           <a
             href="#main"
             className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-full focus:bg-primary focus:px-4 focus:py-2 focus:text-sm focus:font-semibold focus:text-primary-foreground"

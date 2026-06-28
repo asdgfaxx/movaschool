@@ -1,14 +1,9 @@
-"use client";
-
 import Image from "next/image";
 import { Check, GraduationCap, PlayCircle, Sparkles, ChevronDown } from "lucide-react";
 import { Aurora } from "@/components/motion/aurora";
 import { Reveal } from "@/components/motion/reveal";
-import { TextShimmer } from "@/components/motion/text-shimmer";
-import { MagneticButton } from "@/components/motion/magnetic-button";
-import { ParallaxLayer } from "@/components/motion/parallax-layer";
-import { SpotlightCard } from "@/components/motion/spotlight-card";
 import { Counter } from "@/components/motion/counter";
+import { buttonClasses } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
 import type { Dictionary } from "@/messages/types";
 
@@ -18,24 +13,16 @@ export function Hero({ locale, dict }: { locale: string; dict: Dictionary }) {
     dict.teachers.find((t) => t.id === h.teacherId) ?? dict.teachers[1] ?? dict.teachers[0];
 
   return (
-    <section className="mesh-bg relative flex min-h-dvh items-center overflow-hidden pt-28 pb-20 lg:pt-36 lg:pb-28">
-      {/* Parallax aurora layers */}
-      <ParallaxLayer speed={-60} className="pointer-events-none absolute inset-0 -z-10">
-        <Aurora />
-      </ParallaxLayer>
-      <ParallaxLayer speed={-120} className="pointer-events-none absolute inset-0 -z-10">
-        <div className="animate-aurora-slow absolute right-1/4 top-10 h-[30rem] w-[30rem] rounded-full bg-secondary/20 blur-3xl" />
-      </ParallaxLayer>
-      <ParallaxLayer speed={-40} className="pointer-events-none absolute inset-0 -z-10">
-        <div className="animate-float absolute -bottom-10 left-1/4 h-[24rem] w-[24rem] rounded-full bg-accent/15 blur-3xl" />
-      </ParallaxLayer>
+    <section className="relative flex min-h-dvh items-center overflow-hidden pt-28 pb-20 lg:pt-36 lg:pb-28">
+      <Aurora className="opacity-40" />
+      <div className="bg-grid absolute inset-0 -z-10 opacity-30" aria-hidden />
 
       <Container className="relative">
         <div className="grid items-center gap-12 lg:grid-cols-[1.05fr_0.95fr]">
           {/* Copy */}
           <div className="flex flex-col items-start gap-6">
             <Reveal>
-              <span className="glass inline-flex items-center gap-2 rounded-full px-4 py-1.5 text-sm font-semibold text-muted-foreground">
+              <span className="inline-flex items-center gap-2 rounded-full border border-border bg-surface px-4 py-1.5 text-sm font-semibold text-muted-foreground">
                 <Sparkles className="h-4 w-4 text-primary" />
                 {h.badge}
               </span>
@@ -43,9 +30,7 @@ export function Hero({ locale, dict }: { locale: string; dict: Dictionary }) {
 
             <Reveal delay={0.05} as="h1" className="text-4xl font-extrabold leading-[1.05] tracking-tight text-balance sm:text-5xl lg:text-6xl">
               {h.title}{" "}
-              <TextShimmer className="font-extrabold">
-                {h.titleAccent}
-              </TextShimmer>
+              <span className="text-primary">{h.titleAccent}</span>
             </Reveal>
 
             <Reveal delay={0.1}>
@@ -54,17 +39,16 @@ export function Hero({ locale, dict }: { locale: string; dict: Dictionary }) {
 
             <Reveal delay={0.15}>
               <div className="flex flex-col gap-3 sm:flex-row">
-                <MagneticButton href={`/${locale}/contact`} size="lg">
+                <a href={`/${locale}/contact`} className={buttonClasses({ size: "lg" })}>
                   {h.ctaPrimary}
-                </MagneticButton>
-                <MagneticButton
+                </a>
+                <a
                   href={`/${locale}/level-test`}
-                  variant="outline"
-                  size="lg"
+                  className={buttonClasses({ variant: "outline", size: "lg" })}
                 >
                   <PlayCircle className="h-5 w-5" />
                   {h.ctaSecondary}
-                </MagneticButton>
+                </a>
               </div>
             </Reveal>
 
@@ -76,12 +60,9 @@ export function Hero({ locale, dict }: { locale: string; dict: Dictionary }) {
             </Reveal>
           </div>
 
-          {/* Visual — meeting mockup on SpotlightCard */}
+          {/* Visual — meeting mockup */}
           <Reveal delay={0.15} className="relative">
-            <SpotlightCard className="relative mx-auto w-full max-w-md rounded-[1.5rem] border border-border bg-surface p-6 shadow-clay">
-              {/* Glow halo behind card */}
-              <div className="absolute -inset-4 -z-10 rounded-[2rem] bg-[linear-gradient(140deg,var(--primary),var(--secondary),var(--accent))] opacity-10 blur-3xl" />
-
+            <div className="relative mx-auto w-full max-w-md rounded-[1.5rem] border border-border bg-surface p-6 shadow-clay">
               {/* Window chrome */}
               <div className="mb-5 flex items-center gap-1.5">
                 <span className="h-3 w-3 rounded-full bg-destructive" />
@@ -94,7 +75,7 @@ export function Hero({ locale, dict }: { locale: string; dict: Dictionary }) {
               </div>
 
               {/* Teacher video tile */}
-              <div className="relative overflow-hidden rounded-2xl border border-border bg-surface-muted">
+              <div className="relative overflow-hidden rounded-xl border border-border bg-surface-muted">
                 <Image
                   src={teacher.photo}
                   alt={teacher.name}
@@ -102,13 +83,11 @@ export function Hero({ locale, dict }: { locale: string; dict: Dictionary }) {
                   height={220}
                   className="h-44 w-full object-cover sm:h-48"
                 />
-                {/* Gradient overlay */}
-                <div className="absolute inset-0 bg-[linear-gradient(to_top,rgba(0,0,0,0.55),transparent_55%)]" />
-                {/* Name + online badge */}
+                <div className="absolute inset-0 bg-[linear-gradient(to_top,rgba(0,0,0,0.6),transparent_55%)]" />
                 <div className="absolute bottom-3 left-3 right-3 flex items-end justify-between gap-2">
                   <div className="min-w-0 text-white">
                     <p className="truncate text-sm font-bold drop-shadow">{teacher.name}</p>
-                    <p className="mt-0.5 inline-flex items-center gap-1.5 text-[11px] font-semibold text-accent-foreground/90">
+                    <p className="mt-0.5 inline-flex items-center gap-1.5 text-[11px] font-semibold text-white/90">
                       <span className="relative flex h-2 w-2">
                         <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent opacity-70" />
                         <span className="relative inline-flex h-2 w-2 rounded-full bg-accent" />
@@ -129,11 +108,11 @@ export function Hero({ locale, dict }: { locale: string; dict: Dictionary }) {
                   <span>12:34 / 45:00</span>
                 </div>
                 <div className="h-1.5 w-full overflow-hidden rounded-full bg-surface-muted">
-                  <div className="h-full w-1/3 rounded-full bg-[linear-gradient(90deg,var(--primary),var(--secondary))]" />
+                  <div className="h-full w-1/3 rounded-full bg-primary" />
                 </div>
               </div>
 
-              {/* Bar chart with label */}
+              {/* Bar chart */}
               <div className="mt-4">
                 <p className="mb-2 text-[11px] font-semibold text-muted-foreground">
                   {locale === "ru" ? "Активность в уроке" : "Aktywność na lekcji"}
@@ -142,7 +121,7 @@ export function Hero({ locale, dict }: { locale: string; dict: Dictionary }) {
                   {[10, 22, 14, 30, 18, 26, 12, 28, 16, 24, 11, 20].map((bar, i) => (
                     <span
                       key={i}
-                      className="animate-float w-full rounded-full bg-[linear-gradient(to_top,var(--primary),var(--secondary))]"
+                      className="animate-float w-full rounded-full bg-primary/70"
                       style={{ height: bar, animationDelay: `${i * 0.12}s` }}
                     />
                   ))}
@@ -154,21 +133,21 @@ export function Hero({ locale, dict }: { locale: string; dict: Dictionary }) {
                 {h.floatingCards.map((card) => (
                   <span
                     key={card}
-                    className="rounded-xl border border-border bg-surface px-2 py-2.5 text-center text-[11px] font-semibold leading-tight text-foreground"
+                    className="rounded-lg border border-border bg-surface px-2 py-2.5 text-center text-[11px] font-semibold leading-tight text-foreground"
                   >
                     {card}
                   </span>
                 ))}
               </div>
-            </SpotlightCard>
+            </div>
 
             {/* Floating chips with Counter */}
-            <div className="animate-float absolute -left-6 top-10 hidden rounded-2xl border border-border bg-surface px-3 py-2 shadow-clay sm:flex sm:items-center sm:gap-2">
+            <div className="animate-float absolute -left-6 top-10 hidden rounded-xl border border-border bg-surface px-3 py-2 shadow-clay sm:flex sm:items-center sm:gap-2">
               <GraduationCap className="h-5 w-5 text-accent" />
               <Counter value={h.floatingChips[0]} locale={locale} className="text-xs font-bold" />
             </div>
             <div
-              className="animate-float absolute -right-4 bottom-12 hidden rounded-2xl border border-border bg-surface px-3 py-2 shadow-clay sm:block"
+              className="animate-float absolute -right-4 bottom-12 hidden rounded-xl border border-border bg-surface px-3 py-2 shadow-clay sm:block"
               style={{ animationDelay: "-3s" }}
             >
               <Counter value={h.floatingChips[1]} locale={locale} className="text-xs font-bold text-primary" />
@@ -179,9 +158,7 @@ export function Hero({ locale, dict }: { locale: string; dict: Dictionary }) {
 
       {/* Scroll indicator */}
       <div className="absolute bottom-6 left-1/2 -translate-x-1/2 hidden lg:block">
-        <div className="flex flex-col items-center gap-1 text-muted-foreground">
-          <ChevronDown className="h-5 w-5 animate-float" />
-        </div>
+        <ChevronDown className="h-5 w-5 animate-float text-muted-foreground" />
       </div>
     </section>
   );

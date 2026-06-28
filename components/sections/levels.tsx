@@ -7,7 +7,7 @@ import { motion, AnimatePresence } from "motion/react";
 import { Container } from "@/components/ui/container";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { Reveal } from "@/components/motion/reveal";
-import { MagneticButton } from "@/components/motion/magnetic-button";
+import { buttonClasses } from "@/components/ui/button";
 import type { Dictionary } from "@/messages/types";
 
 const LEVEL_COLORS: Record<string, { bg: string; text: string; ring: string }> = {
@@ -77,10 +77,10 @@ export function Levels({ locale, dict }: { locale: string; dict: Dictionary }) {
         </div>
 
         <div className="mt-10 flex justify-center">
-          <MagneticButton href={`/${locale}/courses`} variant="outline" size="lg">
+          <a href={`/${locale}/courses`} className={buttonClasses({ variant: "outline", size: "lg" })}>
             {levels.cta}
             <ArrowRight className="h-5 w-5" />
-          </MagneticButton>
+          </a>
         </div>
       </Container>
     </section>

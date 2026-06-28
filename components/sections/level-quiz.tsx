@@ -7,7 +7,6 @@ import { ArrowRight, GraduationCap, RotateCcw, Sparkles, Headphones, Share2, Che
 import { Container } from "@/components/ui/container";
 import { buttonClasses } from "@/components/ui/button";
 import { ProgressRing } from "@/components/ui/progress-ring";
-import { SpotlightCard } from "@/components/motion/spotlight-card";
 import { cn } from "@/lib/utils";
 import { EASE } from "@/lib/motion";
 import type { Dictionary } from "@/messages/types";
@@ -254,7 +253,7 @@ export function LevelQuiz({
                       .find((c) => c.id === courseId);
                     if (!course) return null;
                     return (
-                      <SpotlightCard key={courseId} className="rounded-2xl border border-border bg-surface-muted p-4 text-left">
+                      <div key={courseId} className="rounded-xl border border-border bg-surface-muted p-4 text-left">
                         <span className="inline-flex items-center rounded-full bg-primary/10 px-2.5 py-1 text-xs font-bold text-primary">
                           {course.level}
                         </span>
@@ -267,7 +266,7 @@ export function LevelQuiz({
                           {dict.pages.courses.cta}
                           <ArrowRight className="h-3 w-3" />
                         </Link>
-                      </SpotlightCard>
+                      </div>
                     );
                   })}
                 </div>

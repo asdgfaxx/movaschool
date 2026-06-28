@@ -4,9 +4,8 @@ import { useState, useMemo } from "react";
 import Link from "next/link";
 import { CalendarRange, Clock, LayoutGrid, Table as TableIcon, Search, X } from "lucide-react";
 import { Container } from "@/components/ui/container";
-import { TiltCard } from "@/components/motion/tilt-card";
 import { Reveal } from "@/components/motion/reveal";
-import { MagneticButton } from "@/components/motion/magnetic-button";
+import { buttonClasses } from "@/components/ui/button";
 import { getIcon } from "@/components/icons/registry";
 import { cn } from "@/lib/utils";
 import type { Dictionary } from "@/messages/types";
@@ -153,9 +152,9 @@ export function CoursesExplorer({ locale, dict }: { locale: string; dict: Dictio
             <div className="flex flex-col items-center gap-4 py-20 text-center">
               <p className="text-lg font-bold">{c.notFoundTitle}</p>
               <p className="max-w-md text-sm text-muted-foreground">{c.notFoundText}</p>
-              <MagneticButton href={`/${locale}/contact`} variant="outline" size="lg">
+              <a href={`/${locale}/contact`} className={buttonClasses({ variant: "outline", size: "lg" })}>
                 {c.notFoundCta}
-              </MagneticButton>
+              </a>
             </div>
           ) : view === "grid" ? (
             <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
@@ -163,10 +162,7 @@ export function CoursesExplorer({ locale, dict }: { locale: string; dict: Dictio
                 const Icon = getIcon(course.icon);
                 return (
                   <Reveal key={course.id ?? course.name} delay={Math.min(i * 0.03, 0.3)}>
-                    <TiltCard
-                      className="group flex h-full flex-col gap-4 rounded-3xl border border-border bg-surface p-6 shadow-soft transition-shadow duration-300 hover:shadow-clay"
-                      intensity={5}
-                    >
+                    <div className="group flex h-full flex-col gap-4 rounded-2xl border border-border bg-surface p-6 shadow-soft transition-shadow duration-300 hover:shadow-clay">
                       <div className="flex items-center justify-between gap-3">
                         <div className="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-primary/10 text-primary transition-colors group-hover:bg-primary group-hover:text-primary-foreground">
                           <Icon className="h-5 w-5" />
@@ -205,7 +201,7 @@ export function CoursesExplorer({ locale, dict }: { locale: string; dict: Dictio
                           {c.cta}
                         </Link>
                       </div>
-                    </TiltCard>
+                    </div>
                   </Reveal>
                 );
               })}

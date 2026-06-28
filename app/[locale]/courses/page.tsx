@@ -2,10 +2,10 @@ import type { Metadata } from "next";
 import { isLocale } from "@/lib/i18n/config";
 import { getDictionary } from "@/lib/i18n/dictionaries";
 import { PageHeader } from "@/components/sections/page-header";
-import { Container } from "@/components/ui/container";
 import { CoursesExplorer } from "@/components/sections/courses-explorer";
-import { MagneticButton } from "@/components/motion/magnetic-button";
+import { Container } from "@/components/ui/container";
 import { Reveal } from "@/components/motion/reveal";
+import { buttonClasses } from "@/components/ui/button";
 
 export async function generateMetadata({
   params,
@@ -64,9 +64,9 @@ export default async function CoursesPage({
                 ? "Напишите нам — подберём курс под ваши цели и уровень."
                 : "Napisz do nas — dobierzemy kurs pod Twoje cele i poziom."}
             </p>
-            <MagneticButton href={`/${loc}/contact`} size="lg">
+            <a href={`/${loc}/contact`} className={buttonClasses({ size: "lg" })}>
               {c.notFoundCta}
-            </MagneticButton>
+            </a>
           </div>
         </Reveal>
       </Container>

@@ -3,8 +3,8 @@
 import { ArrowRight, Building2, Check } from "lucide-react";
 import { Container } from "@/components/ui/container";
 import { Reveal } from "@/components/motion/reveal";
-import { MagneticButton } from "@/components/motion/magnetic-button";
 import { Counter } from "@/components/motion/counter";
+import { buttonClasses } from "@/components/ui/button";
 import type { Dictionary } from "@/messages/types";
 
 export function BusinessTeaser({ locale, dict }: { locale: string; dict: Dictionary }) {
@@ -62,10 +62,10 @@ export function BusinessTeaser({ locale, dict }: { locale: string; dict: Diction
             </Reveal>
 
             <Reveal delay={0.2}>
-              <MagneticButton href={`/${locale}/business`} size="lg" className="mt-2 w-fit">
+              <a href={`/${locale}/business`} className={buttonClasses({ size: "lg", className: "mt-2 w-fit" })}>
                 {b.button}
                 <ArrowRight className="h-5 w-5" />
-              </MagneticButton>
+              </a>
             </Reveal>
           </div>
 

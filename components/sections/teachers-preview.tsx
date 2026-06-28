@@ -6,8 +6,7 @@ import { ArrowRight } from "lucide-react";
 import { Container } from "@/components/ui/container";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { Reveal } from "@/components/motion/reveal";
-import { TiltCard } from "@/components/motion/tilt-card";
-import { MagneticButton } from "@/components/motion/magnetic-button";
+import { buttonClasses } from "@/components/ui/button";
 import { Pill } from "@/components/ui/pill";
 import type { Dictionary } from "@/messages/types";
 
@@ -29,10 +28,7 @@ export function TeachersPreview({ locale, dict }: { locale: string; dict: Dictio
         <div className="mt-12 grid grid-cols-2 gap-4 lg:grid-cols-4">
           {featured.map((t, i) => (
             <Reveal key={t.id ?? t.photo} delay={i * 0.05}>
-              <TiltCard
-                className="group h-full rounded-3xl border border-border bg-surface p-6 text-center shadow-soft transition-shadow duration-300 hover:shadow-clay"
-                intensity={6}
-              >
+              <div className="group h-full rounded-2xl border border-border bg-surface p-6 text-center shadow-soft transition-shadow duration-300 hover:shadow-clay">
                 {/* Avatar with gradient ring */}
                 <div className="relative mx-auto w-fit">
                   <div className="absolute -inset-1 rounded-full bg-[linear-gradient(135deg,var(--primary),var(--accent))] opacity-0 blur transition-opacity duration-300 group-hover:opacity-70" />
@@ -79,16 +75,16 @@ export function TeachersPreview({ locale, dict }: { locale: string; dict: Dictio
                     </Link>
                   </div>
                 </div>
-              </TiltCard>
+              </div>
             </Reveal>
           ))}
         </div>
 
         <div className="mt-10 flex justify-center">
-          <MagneticButton href={`/${locale}/teachers`} variant="outline" size="lg">
+          <a href={`/${locale}/teachers`} className={buttonClasses({ variant: "outline", size: "lg" })}>
             {teachersPreview.cta}
             <ArrowRight className="h-5 w-5" />
-          </MagneticButton>
+          </a>
         </div>
       </Container>
     </section>

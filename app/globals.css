@@ -5,41 +5,46 @@
 
 /* ---- Design tokens (light) ------------------------------------------------ */
 :root {
-  --background: #ffffff;
+  --background: #fdfdfc;
   --surface: #ffffff;
-  --surface-muted: #f1f5fd;
-  --foreground: #0f172a;
-  --muted-foreground: #5b6b8c;
+  --surface-muted: #f5f4f1;
+  --foreground: #1a1a1a;
+  --muted-foreground: #6b6b6b;
 
-  --primary: #2563eb;
+  /* Primary = emerald accent (the one brand color) */
+  --primary: #047857;
   --primary-foreground: #ffffff;
-  --secondary: #6366f1;
+  /* Secondary = darker neutral (charcoal) for contrast, not a second hue */
+  --secondary: #262626;
+  /* Accent = same emerald family, slightly brighter for highlights */
   --accent: #059669;
   --accent-foreground: #ffffff;
 
-  /* Tonal scales (fixed values for predictable contrast) */
-  --primary-50: #eff6ff;
-  --primary-100: #dbeafe;
-  --primary-200: #bfdbfe;
-  --primary-300: #93c5fd;
-  --primary-400: #60a5fa;
-  --primary-500: #3b82f6;
-  --primary-600: #2563eb;
-  --primary-700: #1d4ed8;
-  --primary-800: #1e40af;
-  --primary-900: #1e3a8a;
+  /* Primary tonal scale (emerald) */
+  --primary-50: #ecfdf5;
+  --primary-100: #d1fae5;
+  --primary-200: #a7f3d0;
+  --primary-300: #6ee7b7;
+  --primary-400: #34d399;
+  --primary-500: #10b981;
+  --primary-600: #059669;
+  --primary-700: #047857;
+  --primary-800: #065f46;
+  --primary-900: #064e3b;
 
-  --secondary-50: #eef2ff;
-  --secondary-100: #e0e7ff;
-  --secondary-200: #c7d2fe;
-  --secondary-300: #a5b4fc;
-  --secondary-400: #818cf8;
-  --secondary-500: #6366f1;
-  --secondary-600: #4f46e5;
-  --secondary-700: #4338ca;
-  --secondary-800: #3730a3;
-  --secondary-900: #312e81;
+  /* Secondary = neutral charcoal scale */
+  --secondary-50: #fafafa;
+  --secondary-100: #f5f5f5;
+  --secondary-200: #e5e5e5;
+  --secondary-300: #d4d4d4;
+  --secondary-400: #a3a3a3;
+  --secondary-500: #737373;
+  --secondary-600: #525252;
+  --secondary-700: #404040;
+  --secondary-800: #262626;
+  --secondary-900: #171717;
 
+  /* Accent = emerald (mirrors primary bright end) */
   --accent-50: #ecfdf5;
   --accent-100: #d1fae5;
   --accent-200: #a7f3d0;
@@ -52,68 +57,68 @@
   --accent-900: #064e3b;
 
   /* B2B accents (used only in business section) */
-  --gold: #d4a017;
-  --gold-foreground: #1a1300;
-  --copper: #c2410c;
+  --gold: #b45309;
+  --gold-foreground: #ffffff;
+  --copper: #92400e;
   --copper-foreground: #ffffff;
 
   /* Semantic */
   --success: #16a34a;
   --success-foreground: #ffffff;
-  --warning: #f59e0b;
-  --warning-foreground: #1a1300;
-  --info: #0ea5e9;
+  --warning: #d97706;
+  --warning-foreground: #ffffff;
+  --info: #0284c7;
   --info-foreground: #ffffff;
 
-  /* Gradient tokens */
-  --grad-hero: linear-gradient(135deg, var(--primary), var(--secondary) 55%, var(--accent));
-  --grad-cta: linear-gradient(120deg, var(--primary), var(--secondary));
+  /* Gradient tokens — subtle, single-hue */
+  --grad-hero: linear-gradient(135deg, var(--primary), var(--accent));
+  --grad-cta: linear-gradient(120deg, var(--primary), var(--accent));
   --grad-business: linear-gradient(135deg, var(--primary), var(--gold));
-  --grad-glow: radial-gradient(circle at 50% 0%, color-mix(in oklab, var(--primary) 30%, transparent), transparent 70%);
+  --grad-glow: radial-gradient(circle at 50% 0%, color-mix(in oklab, var(--primary) 18%, transparent), transparent 70%);
 
-  --border: #e4ecfc;
-  --ring: #2563eb;
-  --destructive: #dc2626;
+  --border: #e7e5e0;
+  --ring: #047857;
+  --destructive: #b91c1c;
 
-  --shadow-color: 219 60% 50%;
+  --shadow-color: 160 84% 24%;
 }
 
 /* ---- Design tokens (dark) ------------------------------------------------- */
 .dark {
-  --background: #070b18;
-  --surface: #0f1a31;
-  --surface-muted: #13203b;
-  --foreground: #e9eefb;
-  --muted-foreground: #9fb0d0;
+  --background: #0a0a0a;
+  --surface: #141414;
+  --surface-muted: #1c1c1c;
+  --foreground: #ededed;
+  --muted-foreground: #9ca3a0;
 
-  --primary: #4f8bff;
-  --primary-foreground: #04122e;
-  --secondary: #8b93ff;
+  --primary: #10b981;
+  --primary-foreground: #04140d;
+  --secondary: #d4d4d4;
   --accent: #10b981;
-  --accent-foreground: #042016;
+  --accent-foreground: #04140d;
 
   /* Tonal scales: brighten the mid tones for dark backgrounds */
-  --primary-300: #93c5fd;
-  --primary-400: #60a5fa;
-  --primary-500: #4f8bff;
-  --primary-600: #3b82f6;
+  --primary-300: #6ee7b7;
+  --primary-400: #34d399;
+  --primary-500: #10b981;
+  --primary-600: #059669;
 
-  --secondary-300: #c7d2fe;
-  --secondary-400: #a5b4fc;
-  --secondary-500: #8b93ff;
+  --secondary-300: #d4d4d4;
+  --secondary-400: #a3a3a3;
+  --secondary-500: #737373;
 
   --accent-300: #6ee7b7;
   --accent-400: #34d399;
   --accent-500: #10b981;
 
-  --gold: #e0b428;
-  --copper: #ea580c;
+  --gold: #d97706;
+  --copper: #b45309;
 
-  --border: #233252;
-  --ring: #4f8bff;
-  --destructive: #f87171;
+  --border: #262626;
+  --ring: #10b981;
+  --destructive: #ef4444;
 
-  --shadow-color: 222 70% 4%;
+  --shadow-color: 160 84% 4%;
 }
 
 /* ---- Map tokens into Tailwind's theme so utilities resolve them ----------- */

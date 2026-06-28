@@ -3,7 +3,6 @@
 import { motion, useReducedMotion } from "motion/react";
 import { Container } from "@/components/ui/container";
 import { SectionHeading } from "@/components/ui/section-heading";
-import { ParallaxLayer } from "@/components/motion/parallax-layer";
 import { Reveal } from "@/components/motion/reveal";
 import { getIcon } from "@/components/icons/registry";
 import type { Dictionary } from "@/messages/types";
@@ -21,7 +20,7 @@ export function Steps({ dict }: { dict: Dictionary }) {
           {/* Vertical connector line with fill animation */}
           <div className="absolute bottom-0 left-6 top-0 w-px bg-border lg:left-1/2">
             <motion.div
-              className="h-full w-full bg-[linear-gradient(180deg,var(--primary),var(--secondary),var(--accent))]"
+              className="h-full w-full bg-primary"
               initial={reduce ? { scaleY: 1 } : { scaleY: 0 }}
               whileInView={{ scaleY: 1 }}
               viewport={{ once: true, margin: "-80px" }}
@@ -40,8 +39,8 @@ export function Steps({ dict }: { dict: Dictionary }) {
                   <div className={`flex items-start gap-6 lg:gap-0 ${isEven ? "lg:flex-row" : "lg:flex-row-reverse"}`}>
                     {/* Card */}
                     <div className="flex-1 lg:px-8">
-                      <div className={`rounded-3xl border border-border bg-surface p-6 shadow-soft ${isEven ? "lg:text-right" : ""}`}>
-                        <div className={`mb-3 inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-primary/10 text-primary ${isEven ? "lg:ml-auto" : ""}`}>
+                      <div className={`rounded-2xl border border-border bg-surface p-6 shadow-soft ${isEven ? "lg:text-right" : ""}`}>
+                        <div className={`mb-3 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10 text-primary ${isEven ? "lg:ml-auto" : ""}`}>
                           <Icon className="h-6 w-6" />
                         </div>
                         <h3 className="text-lg font-bold">{step.title}</h3>
@@ -49,10 +48,10 @@ export function Steps({ dict }: { dict: Dictionary }) {
                       </div>
                     </div>
 
-                    {/* Center node with number */}
+                    {/* Center number node (desktop) */}
                     <div className="relative z-10 hidden shrink-0 lg:block lg:w-0">
                       <div className="absolute left-1/2 top-6 -translate-x-1/2">
-                        <div className="flex h-12 w-12 items-center justify-center rounded-full bg-[linear-gradient(135deg,var(--primary),var(--secondary))] text-base font-extrabold text-primary-foreground shadow-clay ring-4 ring-surface-muted">
+                        <div className="flex h-12 w-12 items-center justify-center rounded-full bg-primary text-base font-extrabold text-primary-foreground shadow-clay ring-4 ring-surface-muted">
                           {i + 1}
                         </div>
                       </div>
@@ -60,21 +59,19 @@ export function Steps({ dict }: { dict: Dictionary }) {
 
                     {/* Mobile number badge */}
                     <div className="z-10 shrink-0 lg:hidden">
-                      <div className="flex h-12 w-12 items-center justify-center rounded-full bg-[linear-gradient(135deg,var(--primary),var(--secondary))] text-base font-extrabold text-primary-foreground shadow-clay ring-4 ring-surface-muted">
+                      <div className="flex h-12 w-12 items-center justify-center rounded-full bg-primary text-base font-extrabold text-primary-foreground shadow-clay ring-4 ring-surface-muted">
                         {i + 1}
                       </div>
                     </div>
 
-                    {/* Parallax background number (desktop) */}
+                    {/* Large background number (desktop) */}
                     <div className="hidden lg:block lg:w-1/2">
-                      <ParallaxLayer speed={-30} className="pointer-events-none">
-                        <span
-                          className={`block select-none text-[8rem] font-extrabold leading-none text-primary/5 ${isEven ? "text-right" : ""}`}
-                          aria-hidden
-                        >
-                          {String(i + 1).padStart(2, "0")}
-                        </span>
-                      </ParallaxLayer>
+                      <span
+                        className={`block select-none text-[7rem] font-extrabold leading-none text-primary/5 ${isEven ? "text-right" : ""}`}
+                        aria-hidden
+                      >
+                        {String(i + 1).padStart(2, "0")}
+                      </span>
                     </div>
                   </div>
                 </Reveal>

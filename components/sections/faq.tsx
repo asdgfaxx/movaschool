@@ -5,7 +5,7 @@ import { Search } from "lucide-react";
 import { Container } from "@/components/ui/container";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { Accordion } from "@/components/ui/accordion";
-import { MagneticButton } from "@/components/motion/magnetic-button";
+import { buttonClasses } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import type { Dictionary } from "@/messages/types";
 
@@ -75,9 +75,9 @@ export function Faq({ locale, dict }: { locale: string; dict: Dictionary }) {
         <div className="mt-10 flex flex-col items-center gap-3 rounded-3xl border border-border bg-surface-muted p-8 text-center">
           <h3 className="text-lg font-bold">{faq.ctaTitle}</h3>
           <p className="text-sm text-muted-foreground">{faq.ctaText}</p>
-          <MagneticButton href={`/${locale}/contact`} size="lg" className="mt-2">
+          <a href={`/${locale}/contact`} className={buttonClasses({ size: "lg", className: "mt-2" })}>
             {faq.ctaButton}
-          </MagneticButton>
+          </a>
         </div>
       </Container>
     </section>

@@ -5,7 +5,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { Container } from "@/components/ui/container";
-import { TiltCard } from "@/components/motion/tilt-card";
 import { Reveal } from "@/components/motion/reveal";
 import { Pill } from "@/components/ui/pill";
 import type { Dictionary } from "@/messages/types";
@@ -69,10 +68,7 @@ export function TeachersExplorer({ locale, dict }: { locale: string; dict: Dicti
       <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
         {filtered.map((tc, i) => (
           <Reveal key={tc.id ?? tc.photo} delay={Math.min(i * 0.04, 0.3)}>
-            <TiltCard
-              className="group flex h-full flex-col items-center gap-3 rounded-3xl border border-border bg-surface p-6 text-center shadow-soft transition-shadow duration-300 hover:shadow-clay"
-              intensity={5}
-            >
+            <div className="group flex h-full flex-col items-center gap-3 rounded-2xl border border-border bg-surface p-6 text-center shadow-soft transition-shadow duration-300 hover:shadow-clay">
               {/* Avatar with gradient ring */}
               <div className="relative w-fit">
                 <div className="absolute -inset-1 rounded-full bg-[linear-gradient(135deg,var(--primary),var(--accent))] opacity-0 blur transition-opacity duration-300 group-hover:opacity-70" />
@@ -127,7 +123,7 @@ export function TeachersExplorer({ locale, dict }: { locale: string; dict: Dicti
                 {locale === "ru" ? "Пробный урок" : "Lekcja próbna"}
                 <ArrowRight className="h-3 w-3" />
               </Link>
-            </TiltCard>
+            </div>
           </Reveal>
         ))}
       </div>

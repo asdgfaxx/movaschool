@@ -9,9 +9,7 @@ import { StatTile } from "@/components/ui/stat-tile";
 import { Accordion } from "@/components/ui/accordion";
 import { StaggerGroup, StaggerItem } from "@/components/motion/stagger";
 import { Reveal } from "@/components/motion/reveal";
-import { SpotlightCard } from "@/components/motion/spotlight-card";
-import { ParallaxLayer } from "@/components/motion/parallax-layer";
-import { MagneticButton } from "@/components/motion/magnetic-button";
+import { buttonClasses } from "@/components/ui/button";
 import { getIcon } from "@/components/icons/registry";
 import { cn } from "@/lib/utils";
 
@@ -38,11 +36,11 @@ export default async function BusinessPage({
   return (
     <>
       {/* Premium hero with gold aurora */}
-      <section className="mesh-bg relative overflow-hidden pb-12 pt-32 lg:pt-40">
-        <ParallaxLayer speed={-60} className="pointer-events-none absolute inset-0 -z-10">
-          <div className="animate-aurora absolute -left-20 -top-20 h-72 w-72 rounded-full bg-gold/20 blur-3xl" />
-          <div className="animate-float absolute -right-10 top-10 h-64 w-64 rounded-full bg-primary/20 blur-3xl" />
-        </ParallaxLayer>
+      <section className="relative overflow-hidden border-b border-border bg-surface pb-12 pt-32 lg:pt-40">
+        <div className="pointer-events-none absolute inset-0" aria-hidden>
+          <div className="absolute -left-20 -top-20 h-72 w-72 rounded-full bg-gold/8 blur-3xl" />
+          <div className="absolute -right-10 top-10 h-64 w-64 rounded-full bg-primary/8 blur-3xl" />
+        </div>
         <Container className="relative text-center">
           <Reveal>
             <span className="glass inline-flex items-center gap-2 rounded-full px-4 py-1.5 text-xs font-bold uppercase tracking-[0.18em] text-gold">
@@ -75,7 +73,7 @@ export default async function BusinessPage({
             const Icon = getIcon(item.icon);
             return (
               <StaggerItem key={item.title}>
-                <SpotlightCard className="flex h-full gap-4 rounded-3xl border border-border bg-surface p-6 shadow-soft transition-shadow duration-300 hover:shadow-clay">
+                <div className="flex h-full gap-4 rounded-2xl border border-border bg-surface p-6 shadow-soft transition-shadow duration-300 hover:shadow-clay">
                   <span className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-gold/10 text-gold">
                     <Icon className="h-5 w-5" />
                   </span>
@@ -83,7 +81,7 @@ export default async function BusinessPage({
                     <h3 className="font-bold">{item.title}</h3>
                     <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground">{item.text}</p>
                   </div>
-                </SpotlightCard>
+                </div>
               </StaggerItem>
             );
           })}
@@ -167,13 +165,13 @@ export default async function BusinessPage({
           <StaggerGroup className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {b.cases.map((c) => (
               <StaggerItem key={c.title}>
-                <SpotlightCard className="flex h-full flex-col gap-3 rounded-3xl border border-border bg-surface p-6 shadow-soft">
+                <div className="flex h-full flex-col gap-3 rounded-2xl border border-border bg-surface p-6 shadow-soft">
                   <h3 className="font-bold">{c.title}</h3>
                   <p className="flex-1 text-sm leading-relaxed text-muted-foreground">{c.text}</p>
-                  <div className="rounded-2xl bg-accent/10 px-4 py-2 text-sm font-bold text-accent">
+                  <div className="rounded-xl bg-accent/10 px-4 py-2 text-sm font-bold text-accent">
                     {c.result}
                   </div>
-                </SpotlightCard>
+                </div>
               </StaggerItem>
             ))}
           </StaggerGroup>
@@ -221,10 +219,10 @@ export default async function BusinessPage({
       <section className="py-20">
         <Container>
           <Reveal>
-            <div className="mesh-bg relative overflow-hidden rounded-[2.5rem] border border-border px-8 py-16 text-center shadow-glow sm:px-16">
-              <ParallaxLayer speed={-80} className="pointer-events-none absolute inset-0 -z-10">
-                <div className="animate-blob absolute -left-16 -top-16 h-64 w-64 rounded-full bg-gold/20 blur-3xl" />
-              </ParallaxLayer>
+            <div className="relative overflow-hidden rounded-[2rem] border border-border bg-surface px-8 py-16 text-center shadow-clay sm:px-16">
+              <div className="pointer-events-none absolute inset-0" aria-hidden>
+                <div className="absolute -left-16 -top-16 h-64 w-64 rounded-full bg-gold/8 blur-3xl" />
+              </div>
               <div className="relative mx-auto max-w-2xl">
                 <span className="inline-flex items-center gap-2 rounded-full bg-gold/15 px-3 py-1 text-xs font-bold text-gold">
                   <BadgeCheck className="h-4 w-4" /> {b.badge}
@@ -232,9 +230,9 @@ export default async function BusinessPage({
                 <h2 className="mt-4 text-3xl font-extrabold text-balance text-foreground sm:text-4xl">{b.ctaTitle}</h2>
                 <p className="mx-auto mt-4 max-w-xl text-lg text-muted-foreground">{b.ctaText}</p>
                 <div className="mt-8">
-                  <MagneticButton href={`/${loc}/contact?type=business`} size="lg">
-                    {b.ctaButton}
-                  </MagneticButton>
+                <a href={`/${loc}/contact?type=business`} className={buttonClasses({ size: "lg" })}>
+                  {b.ctaButton}
+                </a>
                 </div>
               </div>
             </div>
