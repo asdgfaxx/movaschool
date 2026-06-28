@@ -561,9 +561,9 @@
 - `dict.contactInfo`: расширить.
 
 ### Чек-лист
-- [ ] `[CT1]` Bento каналов с deep-links (WhatsApp/Telegram)
-- [ ] `[CT1]` Карта-embed или стилизованная иллюстрация
-- [ ] `[CT2]` Расширенная LeadForm с пресетом из query
+- [x] `[CT1]` Bento каналов с deep-links (WhatsApp/Telegram)
+- [x] `[CT1]` Карта-embed или стилизованная иллюстрация
+- [x] `[CT2]` Расширенная LeadForm с пресетом из query
 
 ## 2.8 Partnership — `/[locale]/partnership`
 
@@ -585,10 +585,10 @@
 - Починить баг: kicker использует `nav.contact` → добавить `nav.partnership` или `pages.partnership.kicker`.
 
 ### Чек-лист
-- [ ] `[PA1]` Hero с gold-accent, починить kicker-баг
-- [ ] `[PA1]` Perks bento-grid, semantic иконки
-- [ ] `[PA2]` Комиссионный калькулятор (client)
-- [ ] `[PA2]` Логотипы партнёров, форма заявки/пресет
+- [x] `[PA1]` Hero с gold-accent, починить kicker-баг
+- [x] `[PA1]` Perks bento-grid, semantic иконки
+- [x] `[PA2]` Комиссионный калькулятор (client)
+- [x] `[PA2]` Логотипы партнёров, форма заявки/пресет
 
 ## 2.9 Legal — `/[locale]/legal/[doc]`
 

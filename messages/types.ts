@@ -285,8 +285,17 @@ export interface Dictionary {
       title: string;
       subtitle: string;
       intro: string;
+      kicker: string;
       perks: Feature[];
+      calculatorTitle: string;
+      calculatorRate: string;
+      calculatorStudentsLabel: string;
+      calculatorCommissionLabel: string;
+      calculatorTiers: { min: number; rate: number }[];
+      partnersTitle: string;
+      partners: { name: string }[];
       cta: string;
+      ctaButton: string;
     };
     b1: { title: string; subtitle: string; intro: string; topics: Feature[]; cta: string };
     business: {

@@ -490,14 +490,33 @@ export const pl: Dictionary = {
     partnership: {
       title: "Partnerstwo",
       subtitle: "Współpracuj z MOVASchool i rozwijaj się razem z nami.",
+      kicker: "Dla partnerów",
       intro:
         "Jesteś blogerem, pracodawcą zatrudniającym obcokrajowców albo prowadzisz społeczność imigrantów? Stwórzmy coś wartościowego razem.",
       perks: [
-        { title: "Program afiliacyjny", text: "Atrakcyjna prowizja za każdego poleconego ucznia." },
-        { title: "Kursy dla firm", text: "Polski dla zespołów — faktury VAT i raporty postępów." },
-        { title: "Wspólne materiały", text: "Webinary, treści i akcje edukacyjne dla Twojej społeczności." },
+        { title: "Program afiliacyjny", text: "Atrakcyjna prowizja za każdego poleconego ucznia.", icon: "Handshake" },
+        { title: "Kursy dla firm", text: "Polski dla zespołów — faktury VAT i raporty postępów.", icon: "Briefcase" },
+        { title: "Wspólne materiały", text: "Webinary, treści i akcje edukacyjne dla Twojej społeczności.", icon: "Megaphone" },
       ],
-      cta: "Napisz do nas",
+      calculatorTitle: "Kalkulator prowizji",
+      calculatorRate: "Stawka prowizji",
+      calculatorStudentsLabel: "Liczba uczniów",
+      calculatorCommissionLabel: "Twoja prowizja",
+      calculatorTiers: [
+        { min: 1, rate: 10 },
+        { min: 5, rate: 12 },
+        { min: 10, rate: 15 },
+        { min: 25, rate: 18 },
+      ],
+      partnersTitle: "Ufają nam",
+      partners: [
+        { name: "Polski dla Ukraińców" },
+        { name: "Warszawa Expats" },
+        { name: "Medycy PL" },
+        { name: "IT Polszczyzna" },
+      ],
+      cta: "Gotowy na współpracę?",
+      ctaButton: "Napisz do nas",
     },
     b1: {
       title: "Ćwiczenia do egzaminu B1",
