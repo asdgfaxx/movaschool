@@ -89,7 +89,7 @@ export default async function ArticlePage({
           </div>
         </Reveal>
 
-        <BlogCover from={post.cover[0]} to={post.cover[1]} className="mt-8 h-48 rounded-3xl sm:h-64" />
+        <BlogCover from={post.cover[0]} to={post.cover[1]} slug={post.slug} className="mt-8 h-48 rounded-3xl sm:h-64" />
 
         <div className="mt-10 flex flex-col gap-7">
           {post.body.map((section, i) => (
@@ -136,7 +136,7 @@ export default async function ArticlePage({
                 href={`/${loc}/blog/${p.slug}`}
                 className="group flex flex-col overflow-hidden rounded-3xl border border-border bg-surface shadow-soft transition-all duration-300 hover:-translate-y-1 hover:shadow-clay"
               >
-                <BlogCover from={p.cover[0]} to={p.cover[1]} className="h-28" />
+                <BlogCover from={p.cover[0]} to={p.cover[1]} slug={p.slug} className="h-28" />
                 <div className="flex flex-col gap-2 p-5">
                   <h3 className="font-bold leading-snug transition-colors group-hover:text-primary">
                     {p.title}

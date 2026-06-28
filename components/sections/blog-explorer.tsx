@@ -5,6 +5,7 @@ import Link from "next/link";
 import { ArrowUpRight, Clock, Search } from "lucide-react";
 import { Container } from "@/components/ui/container";
 import { Reveal } from "@/components/motion/reveal";
+import { TiltCard } from "@/components/motion/tilt-card";
 import { BlogCover } from "@/components/blog/blog-cover";
 import { cn } from "@/lib/utils";
 import type { BlogPost } from "@/content/blog";
@@ -49,39 +50,46 @@ export function BlogExplorer({
   });
 
   const hasFilters = category !== "all" || query !== "";
+  const featuredLabel = locale === "ru" ? "Рекомендуем" : "Polecane";
+  const searchPlaceholder = locale === "ru" ? "Поиск..." : "Szukaj...";
+  const allLabel = locale === "ru" ? "Все" : "Wszystkie";
+  const authorLabel = locale === "ru" ? "Автор" : "Autor";
+  const emptyLabel = locale === "ru" ? "Ничего не найдено" : "Nic nie znaleziono";
 
   return (
     <Container className="pb-12">
       {/* Featured post */}
       {!hasFilters && featured && (
         <Reveal className="mb-10">
-          <Link
-            href={`/${locale}/blog/${featured.slug}`}
-            className="group grid overflow-hidden rounded-[2rem] border border-border bg-surface shadow-soft transition-all duration-300 hover:shadow-clay lg:grid-cols-2"
-          >
-            <BlogCover from={featured.cover[0]} to={featured.cover[1]} className="h-64 lg:h-auto">
-              <span className="absolute left-4 top-4 inline-flex rounded-full bg-white/90 px-3 py-1 text-xs font-bold text-slate-900">
-                {locale === "ru" ? "Рекомендуем" : "Polecane"}
-              </span>
-            </BlogCover>
-            <div className="flex flex-col gap-3 p-8">
-              <span className="text-xs font-bold uppercase tracking-wide text-primary">{featured.category}</span>
-              <h2 className="text-2xl font-extrabold leading-snug transition-colors group-hover:text-primary">
-                {featured.title}
-              </h2>
-              <p className="flex-1 text-sm leading-relaxed text-muted-foreground">{featured.excerpt}</p>
-              <div className="flex items-center justify-between border-t border-border pt-3 text-xs text-muted-foreground">
-                <span>{fmt.format(new Date(featured.date))}</span>
-                <span className="inline-flex items-center gap-1">
-                  <Clock className="h-3.5 w-3.5" />
-                  {featured.readMinutes} {dict.blog.minRead}
+          <TiltCard intensity={3} className="rounded-[2rem]">
+            <Link
+              href={`/${locale}/blog/${featured.slug}`}
+              className="group grid overflow-hidden rounded-[2rem] border border-border bg-surface shadow-soft transition-shadow duration-300 hover:shadow-clay lg:grid-cols-2"
+            >
+              <BlogCover from={featured.cover[0]} to={featured.cover[1]} slug={featured.slug} className="h-64 lg:h-auto">
+                <span className="absolute left-4 top-4 inline-flex rounded-full bg-white/90 px-3 py-1 text-xs font-bold text-slate-900">
+                  {featuredLabel}
                 </span>
+              </BlogCover>
+              <div className="flex flex-col gap-3 p-8">
+                <span className="text-xs font-bold uppercase tracking-wide text-primary">{featured.category}</span>
+                <h2 className="text-2xl font-extrabold leading-snug transition-colors group-hover:text-primary">
+                  {featured.title}
+                </h2>
+                <p className="flex-1 text-sm leading-relaxed text-muted-foreground">{featured.excerpt}</p>
+                <div className="flex items-center justify-between border-t border-border pt-3 text-xs text-muted-foreground">
+                  <span>{fmt.format(new Date(featured.date))}</span>
+                  <span className="inline-flex items-center gap-1">
+                    <Clock className="h-3.5 w-3.5" />
+                    {featured.readMinutes} {dict.blog.minRead}
+                  </span>
+                </div>
+                {featured.author && (
+                  <span className="text-xs text-muted-foreground">{authorLabel}: {featured.author}</span>
+                )}
               </div>
-              {featured.author && (
-                <span className="text-xs text-muted-foreground">{locale === "ru" ? "Автор" : "Autor"}: {featured.author}</span>
-              )}
-            </div>
-          </Link>
+            </Link>
+          </TiltCard>
         </Reveal>
       )}
 
@@ -93,7 +101,7 @@ export function BlogExplorer({
             type="search"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
-            placeholder={locale === "ru" ? "Поиск..." : "Szukaj..."}
+            placeholder={searchPlaceholder}
             className="w-full rounded-full border border-border bg-surface py-2 pl-9 pr-3 text-sm outline-none focus:border-primary"
           />
         </div>
@@ -105,7 +113,7 @@ export function BlogExplorer({
               category === "all" ? "bg-primary text-primary-foreground" : "border border-border bg-surface text-muted-foreground hover:text-foreground",
             )}
           >
-            {locale === "ru" ? "Все" : "Wszystkie"}
+            {allLabel}
           </button>
           {categories.map((cat) => (
             <button
@@ -127,12 +135,12 @@ export function BlogExplorer({
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {filtered.filter((p) => !(!hasFilters && p === featured)).map((post, i) => (
             <Reveal key={post.slug} delay={Math.min(i * 0.04, 0.3)}>
-              <div className="group h-full rounded-2xl">
+              <TiltCard intensity={6} className="h-full rounded-3xl">
                 <Link
                   href={`/${locale}/blog/${post.slug}`}
                   className="flex h-full flex-col overflow-hidden rounded-3xl border border-border bg-surface shadow-soft transition-shadow duration-300 hover:shadow-clay"
                 >
-                  <BlogCover from={post.cover[0]} to={post.cover[1]} className="h-40">
+                  <BlogCover from={post.cover[0]} to={post.cover[1]} slug={post.slug} className="h-40">
                     <span className="absolute left-4 top-4 inline-flex rounded-full bg-white/85 px-3 py-1 text-xs font-bold text-slate-900">
                       {post.category}
                     </span>
@@ -164,13 +172,13 @@ export function BlogExplorer({
                     </span>
                   </div>
                 </Link>
-              </div>
+              </TiltCard>
             </Reveal>
           ))}
         </div>
       ) : (
         <p className="py-20 text-center text-sm text-muted-foreground">
-          {locale === "ru" ? "Ничего не найдено" : "Nic nie znaleziono"}
+          {emptyLabel}
         </p>
       )}
     </Container>

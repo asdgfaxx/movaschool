@@ -513,9 +513,9 @@
 - `content/blog.ts`: `featured` flag, `tags[]`, `author`.
 
 ### Чек-лист
-- [ ] `[BL1]` Hero с паттерном, featured-пост
-- [ ] `[BL1]` Filter bar (категории + поиск), расширить `content/blog.ts`
-- [ ] `[BL2]` Grid на SpotlightCard+tilt, обложки с паттерном/SVG
+- [x] `[BL1]` Hero с паттерном, featured-пост
+- [x] `[BL1]` Filter bar (категории + поиск), расширить `content/blog.ts`
+- [x] `[BL2]` Grid на SpotlightCard+tilt, обложки с паттерном/SVG
 - [ ] `[BL2]` (опц.) Pagination/load more
 
 ## 2.6 Blog post — `/[locale]/blog/[slug]`

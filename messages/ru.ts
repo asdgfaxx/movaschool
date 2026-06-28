@@ -297,6 +297,7 @@ export const ru: Dictionary = {
     telegram: "https://t.me/movaschool",
   },
   blog: {
+    kicker: "Блог MOVASchool",
     title: "Блог о польском языке",
     subtitle: "Практичные гайды об экзаменах, грамматике и жизни в Польше — без воды.",
     readMore: "Читать дальше",

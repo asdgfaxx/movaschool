@@ -223,6 +223,7 @@ export interface Dictionary {
     telegram: string;
   };
   blog: {
+    kicker: string;
     title: string;
     subtitle: string;
     readMore: string;
