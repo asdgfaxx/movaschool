@@ -154,6 +154,20 @@ export interface Dictionary {
     platformsLabel: string;
     lessonProgressLabel: string;
     activityLabel: string;
+    /** Optional fields for the alternate "ascii/terminal" hero variant (?hero=ascii). */
+    ascii?: {
+      badge: string;
+      title: string;
+      titleAccent: string;
+      subtitle: string;
+      ctaPrimary: string;
+      ctaSecondary: string;
+      protocolLabel: string;
+      systemLabel: string;
+      versionLabel: string;
+      renderingLabel: string;
+      frameLabel: string;
+    };
   };
   stats: { items: Stat[] };
   how: { kicker: string; title: string; subtitle: string; items: Feature[] };

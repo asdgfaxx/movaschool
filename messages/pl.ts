@@ -41,6 +41,20 @@ export const pl: Dictionary = {
     platformsLabel: "Oceniani na",
     lessonProgressLabel: "Postęp lekcji",
     activityLabel: "Aktywność na lekcji",
+    ascii: {
+      badge: "13 lat online",
+      title: "Naucz się polskiego",
+      titleAccent: "i poczuj się jak w domu",
+      subtitle:
+        "Żywe lekcje online z native speakerem, interaktywna platforma i wsparcie na każdym kroku. Od pierwszego słowa do egzaminu B1.",
+      ctaPrimary: "Zacznij wspinaczkę",
+      ctaSecondary: "Sprawdź poziom",
+      protocolLabel: "MOVA.PROTOCOL",
+      systemLabel: "SYSTEM.AKTYWNY",
+      versionLabel: "V1.0.0",
+      renderingLabel: "RENDEROWANIE",
+      frameLabel: "∞",
+    },
   },
   stats: {
     items: [

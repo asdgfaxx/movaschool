@@ -510,3 +510,27 @@
   position: relative;
   z-index: 1;
 }
+
+/* ---- Hero ascii/terminal variant utilities -------------------------------- */
+
+.dither-pattern {
+  background-image:
+    repeating-linear-gradient(0deg, transparent 0px, transparent 1px, var(--foreground) 1px, var(--foreground) 2px),
+    repeating-linear-gradient(90deg, transparent 0px, transparent 1px, var(--foreground) 1px, var(--foreground) 2px);
+  background-size: 3px 3px;
+}
+
+.stars-bg {
+  background-image:
+    radial-gradient(1px 1px at 20% 30%, var(--foreground), transparent),
+    radial-gradient(1px 1px at 60% 70%, var(--foreground), transparent),
+    radial-gradient(1px 1px at 50% 50%, var(--foreground), transparent),
+    radial-gradient(1px 1px at 80% 10%, var(--foreground), transparent),
+    radial-gradient(1px 1px at 90% 60%, var(--foreground), transparent),
+    radial-gradient(1px 1px at 33% 80%, var(--foreground), transparent),
+    radial-gradient(1px 1px at 15% 60%, var(--foreground), transparent),
+    radial-gradient(1px 1px at 70% 40%, var(--foreground), transparent);
+  background-size: 200% 200%, 180% 180%, 250% 250%, 220% 220%, 190% 190%, 240% 240%, 210% 210%, 230% 230%;
+  background-position: 0% 0%, 40% 40%, 60% 60%, 20% 20%, 80% 80%, 30% 30%, 70% 70%, 50% 50%;
+  opacity: 0.18;
+}

@@ -41,6 +41,20 @@ export const ru: Dictionary = {
     platformsLabel: "Нас оценивают на",
     lessonProgressLabel: "Прогресс урока",
     activityLabel: "Активность в уроке",
+    ascii: {
+      badge: "13 лет онлайн",
+      title: "Выучи польский",
+      titleAccent: "и почувствуй себя как дома",
+      subtitle:
+        "Живые уроки онлайн с носителем языка, интерактивная платформа и поддержка на каждом шагу. От первого слова до экзамена B1.",
+      ctaPrimary: "Начать подъём",
+      ctaSecondary: "Проверить уровень",
+      protocolLabel: "MOVA.PROTOCOL",
+      systemLabel: "СИСТЕМА.АКТИВНА",
+      versionLabel: "V1.0.0",
+      renderingLabel: "РЕНДЕРИНГ",
+      frameLabel: "∞",
+    },
   },
   stats: {
     items: [

@@ -2,6 +2,7 @@ import { Suspense } from "react";
 import { isLocale } from "@/lib/i18n/config";
 import { getDictionary } from "@/lib/i18n/dictionaries";
 import { Hero } from "@/components/sections/hero";
+import { HeroAscii } from "@/components/sections/hero-ascii";
 import { PlatformsMarquee } from "@/components/sections/platforms-marquee";
 import { Stats } from "@/components/sections/stats";
 import { HowItWorks } from "@/components/sections/how-it-works";
@@ -18,16 +19,20 @@ import { FinalCta } from "@/components/sections/final-cta";
 
 export default async function HomePage({
   params,
+  searchParams,
 }: {
   params: Promise<{ locale: string }>;
+  searchParams?: Promise<{ hero?: string }>;
 }) {
   const { locale } = await params;
+  const sp = (await searchParams) ?? {};
+  const useAsciiHero = sp.hero === "ascii";
   const loc = isLocale(locale) ? locale : "pl";
   const dict = await getDictionary(loc);
 
   return (
     <>
-      <Hero locale={loc} dict={dict} />
+      {useAsciiHero ? <HeroAscii locale={loc} dict={dict} /> : <Hero locale={loc} dict={dict} />}
       <PlatformsMarquee dict={dict} />
       <Stats locale={loc} dict={dict} />
       <HowItWorks dict={dict} />
