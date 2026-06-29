@@ -317,6 +317,10 @@ export const pl: Dictionary = {
     copiedLabel: "Skopiowano!",
     tocLabel: "Spis treści",
     authorLabel: "Autor",
+    featuredLabel: "Polecane",
+    searchPlaceholder: "Szukaj...",
+    allLabel: "Wszystkie",
+    noResults: "Nic nie znaleziono",
   },
   pages: {
     courses: {
@@ -336,6 +340,7 @@ export const pl: Dictionary = {
       notFoundTitle: "Nic nie znaleziono",
       notFoundText: "Spróbuj zmienić filtry lub napisz do nas — dobierzemy kurs indywidualnie.",
       notFoundCta: "Skontaktuj się",
+      searchPlaceholder: "Szukaj...",
       groups: [
         {
           id: "general",
@@ -406,6 +411,13 @@ export const pl: Dictionary = {
     teachers: {
       title: "Nasi nauczyciele",
       subtitle: "Zespół, który łączy doświadczenie z prawdziwą pasją do nauczania.",
+      searchPlaceholder: "Szukaj...",
+      filterAllLanguages: "Wszystkie języki",
+      filterAllLevels: "Wszystkie poziomy",
+      filterAllSpecialties: "Wszystkie specjalizacje",
+      resultsCount: "lektorów",
+      trialLesson: "Lekcja próbna",
+      noResults: "Nic nie znaleziono",
     },
     levelTest: {
       title: "Sprawdź swój poziom",
@@ -570,12 +582,17 @@ export const pl: Dictionary = {
           explanation: "Po słowie „dużo” używamy dopełniacza l.mn. — „przyjaciół”.",
         },
       ],
+      demoCheckLabel: "Sprawdź",
+      demoCorrectLabel: "poprawnie",
+      demoResetLabel: "Jeszcze raz",
       materialsTitle: "Materiały do pobrania",
       materials: [
         { name: "Arkusz egzaminu B1 (PDF)", description: "Pełny arkusz z zeszłego roku" },
         { name: "Klucz odpowiedzi (PDF)", description: "Klucz z oznaczeniami punktów" },
         { name: "Lista wyrażeń egzaminacyjnych (PDF)", description: "30 najczęściej pojawiających się zwrotów" },
       ],
+      downloadLabel: "Pobierz (wkrótce)",
+      exampleLabel: "Przykład:",
       cta: "Zapisz się na kurs B1",
     },
     business: {

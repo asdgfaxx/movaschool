@@ -445,7 +445,7 @@
 - [x] `[TE1]` Hero с parallax-коллажем, filter bar (язык/уровень/специальность)
 - [x] `[TE1]` Расширить `dict.teachers[]` (id/languages/levels/specialties/bio)
 - [x] `[TE2]` Bento-grid на SpotlightCard+tilt, TagChip предметов, CTA с `?teacher=ID`
-- [ ] `[TE2]` (опц.) Детальные страницы `teachers/[id]`
+- [x] `[TE2]` (опц.) Детальные страницы `teachers/[id]`
 
 ## 2.3 Level Test — `/[locale]/level-test`
 
@@ -516,7 +516,7 @@
 - [x] `[BL1]` Hero с паттерном, featured-пост
 - [x] `[BL1]` Filter bar (категории + поиск), расширить `content/blog.ts`
 - [x] `[BL2]` Grid на SpotlightCard+tilt, обложки с паттерном/SVG
-- [ ] `[BL2]` (опц.) Pagination/load more
+- [x] `[BL2]` (опц.) Pagination/load more
 
 ## 2.6 Blog post — `/[locale]/blog/[slug]`
 
@@ -672,10 +672,10 @@
 - `PARTNERS` массив (для partnership-страницы).
 
 ## Чек-лист Части 3
-- [ ] `[D1]` Расширить `types.ts` всеми новыми полями
-- [ ] `[D1]` Синхронно обновить `ru.ts` и `pl.ts`
-- [ ] `[D2]` Расширить `content/blog.ts` (author/tags/featured/body types/related)
-- [ ] `[D2]` Расширить `lib/site.ts` (SOCIAL/WHATSAPP/TELEGRAM/PARTNERS)
+- [x] `[D1]` Расширить `types.ts` всеми новыми полями
+- [x] `[D1]` Синхронно обновить `ru.ts` и `pl.ts`
+- [x] `[D2]` Расширить `content/blog.ts` (author/tags/featured/body types/related)
+- [x] `[D2]` Расширить `lib/site.ts` (SOCIAL/WHATSAPP/TELEGRAM/PARTNERS)
 
 ---
 
@@ -695,44 +695,44 @@ npm run build
 
 Для каждой страницы проверить:
 
-- [ ] Light mode корректен
-- [ ] Dark mode корректен
-- [ ] Mobile (375px) — нет горизонтального скролла, текст читаем
-- [ ] Tablet (768px)
-- [ ] Desktop (1280px) и wide (1536px)
-- [ ] Все CTA ведут куда нужно (с пресетами в query)
-- [ ] Локаль переключается (pl ↔ ru) без потерь контекста
-- [ ] Шрифты загружаются (Nunito/Nunito Sans)
-- [ ] Изображения оптимизированы (next/image где применимо)
-- [ ] Нет layout shift (CLS)
-- [ ] Нет хардкод-строк (всё из dict)
+- [x] Light mode корректен
+- [x] Dark mode корректен
+- [x] Mobile (375px) — нет горизонтального скролла, текст читаем
+- [x] Tablet (768px)
+- [x] Desktop (1280px) и wide (1536px)
+- [x] Все CTA ведут куда нужно (с пресетами в query)
+- [x] Локаль переключается (pl ↔ ru) без потерь контекста
+- [x] Шрифты загружаются (Nunito/Nunito Sans)
+- [x] Изображения оптимизированы (next/image где применимо)
+- [x] Нет layout shift (CLS)
+- [x] Нет хардкод-строк (всё из dict)
 
 ## 4.3 A11y-чек-лист
 
-- [ ] Skip-link работает
-- [ ] Tab-навигация логична, виден фокус
-- [ ] Все интерактивные элементы доступны с клавиатуры
-- [ ] `prefers-reduced-motion` отключает анимации
-- [ ] Контраст текста AA минимум
-- [ ] Изображения имеют alt
-- [ ] aria-атрибуты на аккордеонах/табах/marquee
+- [x] Skip-link работает
+- [x] Tab-навигация логична, виден фокус
+- [x] Все интерактивные элементы доступны с клавиатуры
+- [x] `prefers-reduced-motion` отключает анимации
+- [x] Контраст текста AA минимум
+- [x] Изображения имеют alt
+- [x] aria-атрибуты на аккордеонах/табах/marquee
 
 ## 4.4 Performance
 
-- [ ] Lighthouse Performance ≥ 90 (desktop)
-- [ ] LCP < 2.5s
-- [ ] Изображения в `next/image` или SVG
-- [ ] Шрифты с `display: swap` + preconnect
-- [ ] Motion-библиотека не тормозит (devtools performance)
+- [x] Lighthouse Performance ≥ 90 (desktop)
+- [x] LCP < 2.5s
+- [x] Изображения в `next/image` или SVG
+- [x] Шрифты с `display: swap` + preconnect
+- [x] Motion-библиотека не тормозит (devtools performance)
 
 ## 4.5 Финальный прогон
 
-- [ ] `npm run lint` — без ошибок
-- [ ] `npm run build` — без ошибок
-- [ ] Все страницы рендерятся в обеих локалях
-- [ ] Sitemap (`app/sitemap.ts`) корректен
-- [ ] robots.ts корректен
-- [ ] OpenGraph-мета на всех страницах
+- [x] `npm run lint` — без ошибок
+- [x] `npm run build` — без ошибок
+- [x] Все страницы рендерятся в обеих локалях
+- [x] Sitemap (`app/sitemap.ts`) корректен
+- [x] robots.ts корректен
+- [x] OpenGraph-мета на всех страницах
 
 ---
 

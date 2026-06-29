@@ -57,7 +57,7 @@ export default async function B1Page({
           <Reveal delay={0.15}>
             <div className="mx-auto mt-8 inline-flex items-center gap-3 rounded-2xl border border-border bg-surface px-5 py-3 shadow-soft">
               <span className="text-sm font-semibold text-muted-foreground">
-                {loc === "ru" ? "Пример:" : "Przykład:"}
+                {b.exampleLabel}
               </span>
               <span className="text-sm font-bold text-foreground">
                 {b.demoExercises[0].question}
@@ -103,7 +103,9 @@ export default async function B1Page({
               exercises={b.demoExercises}
               title={b.demoTitle}
               subtitle={b.demoSubtitle}
-              locale={loc}
+              checkLabel={b.demoCheckLabel}
+              correctLabel={b.demoCorrectLabel}
+              resetLabel={b.demoResetLabel}
             />
           </Reveal>
         </Container>
@@ -127,7 +129,7 @@ export default async function B1Page({
                     className="inline-flex items-center gap-1.5 text-sm font-semibold text-primary transition-colors hover:underline"
                   >
                     <Download className="h-4 w-4" />
-                    {loc === "ru" ? "Скачать (скоро)" : "Pobierz (wkrótce)"}
+                    {b.downloadLabel}
                   </button>
                 </div>
               </StaggerItem>

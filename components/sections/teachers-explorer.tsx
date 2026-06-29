@@ -10,6 +10,7 @@ import { Pill } from "@/components/ui/pill";
 import type { Dictionary } from "@/messages/types";
 
 export function TeachersExplorer({ locale, dict }: { locale: string; dict: Dictionary }) {
+  const t = dict.pages.teachers;
   const [langFilter, setLangFilter] = useState("all");
   const [levelFilter, setLevelFilter] = useState("all");
   const [specFilter, setSpecFilter] = useState("all");
@@ -42,25 +43,25 @@ export function TeachersExplorer({ locale, dict }: { locale: string; dict: Dicti
       {/* Filter bar */}
       <div className="mb-8 flex flex-wrap items-center gap-3">
         <select value={langFilter} onChange={(e) => setLangFilter(e.target.value)} className={selectBase}>
-          <option value="all">{locale === "ru" ? "Все языки" : "Wszystkie języki"}</option>
+          <option value="all">{t.filterAllLanguages}</option>
           {allLanguages.map((l) => (
             <option key={l} value={l}>{l.toUpperCase()}</option>
           ))}
         </select>
         <select value={levelFilter} onChange={(e) => setLevelFilter(e.target.value)} className={selectBase}>
-          <option value="all">{locale === "ru" ? "Все уровни" : "Wszystkie poziomy"}</option>
+          <option value="all">{t.filterAllLevels}</option>
           {["A1", "A2", "B1", "B2", "C1"].map((l) => (
             <option key={l} value={l}>{l}</option>
           ))}
         </select>
         <select value={specFilter} onChange={(e) => setSpecFilter(e.target.value)} className={selectBase}>
-          <option value="all">{locale === "ru" ? "Все спец." : "Wszystkie specjalizacje"}</option>
+          <option value="all">{t.filterAllSpecialties}</option>
           {allSpecialties.map((s) => (
             <option key={s} value={s}>{s}</option>
           ))}
         </select>
         <span className="ml-auto text-xs text-muted-foreground">
-          {filtered.length} {locale === "ru" ? "преподавателей" : "lektorów"}
+          {filtered.length} {t.resultsCount}
         </span>
       </div>
 
@@ -120,7 +121,7 @@ export function TeachersExplorer({ locale, dict }: { locale: string; dict: Dicti
                 href={`/${locale}/contact?teacher=${tc.id ?? ""}`}
                 className="mt-auto inline-flex items-center gap-1 text-xs font-semibold text-primary hover:underline"
               >
-                {locale === "ru" ? "Пробный урок" : "Lekcja próbna"}
+                {t.trialLesson}
                 <ArrowRight className="h-3 w-3" />
               </Link>
             </div>
@@ -130,7 +131,7 @@ export function TeachersExplorer({ locale, dict }: { locale: string; dict: Dicti
 
       {filtered.length === 0 && (
         <p className="py-20 text-center text-sm text-muted-foreground">
-          {locale === "ru" ? "Ничего не найдено" : "Nic nie znaleziono"}
+          {t.noResults}
         </p>
       )}
     </Container>

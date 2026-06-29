@@ -241,6 +241,10 @@ export interface Dictionary {
     copiedLabel: string;
     tocLabel: string;
     authorLabel: string;
+    featuredLabel: string;
+    searchPlaceholder: string;
+    allLabel: string;
+    noResults: string;
   };
   pages: {
     courses: {
@@ -261,8 +265,19 @@ export interface Dictionary {
       notFoundTitle: string;
       notFoundText: string;
       notFoundCta: string;
+      searchPlaceholder: string;
     };
-    teachers: { title: string; subtitle: string };
+    teachers: {
+      title: string;
+      subtitle: string;
+      searchPlaceholder: string;
+      filterAllLanguages: string;
+      filterAllLevels: string;
+      filterAllSpecialties: string;
+      resultsCount: string;
+      trialLesson: string;
+      noResults: string;
+    };
     levelTest: {
       title: string;
       subtitle: string;
@@ -315,8 +330,13 @@ export interface Dictionary {
       demoTitle: string;
       demoSubtitle: string;
       demoExercises: { question: string; options: string[]; answer: number; explanation: string }[];
+      demoCheckLabel: string;
+      demoCorrectLabel: string;
+      demoResetLabel: string;
       materialsTitle: string;
       materials: { name: string; description: string }[];
+      downloadLabel: string;
+      exampleLabel: string;
       cta: string;
     };
     business: {

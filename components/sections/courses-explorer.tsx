@@ -75,7 +75,7 @@ export function CoursesExplorer({ locale, dict }: { locale: string; dict: Dictio
                 type="search"
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
-                placeholder={locale === "ru" ? "Поиск..." : "Szukaj..."}
+                placeholder={c.searchPlaceholder}
                 className="w-full rounded-full border border-border bg-surface py-2 pl-9 pr-3 text-sm outline-none focus:border-primary"
               />
             </div>

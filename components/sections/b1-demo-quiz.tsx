@@ -11,12 +11,16 @@ export function B1DemoQuiz({
   exercises,
   title,
   subtitle,
-  locale,
+  checkLabel,
+  correctLabel,
+  resetLabel,
 }: {
   exercises: Exercise[];
   title: string;
   subtitle: string;
-  locale: string;
+  checkLabel: string;
+  correctLabel: string;
+  resetLabel: string;
 }) {
   const [answers, setAnswers] = useState<(number | null)[]>(exercises.map(() => null));
   const [submitted, setSubmitted] = useState(false);
@@ -96,7 +100,7 @@ export function B1DemoQuiz({
             disabled={!allAnswered}
             className="inline-flex items-center gap-2 rounded-full bg-[linear-gradient(110deg,var(--primary),var(--secondary))] px-6 py-3 text-sm font-semibold text-primary-foreground shadow-soft transition-all hover:shadow-clay disabled:opacity-50 disabled:pointer-events-none"
           >
-            {locale === "ru" ? "Проверить" : "Sprawdź"}
+            {checkLabel}
             <ArrowRight className="h-4 w-4" />
           </button>
         ) : (
@@ -106,7 +110,7 @@ export function B1DemoQuiz({
                 {correctCount}/{exercises.length}
               </span>
               <span className="text-muted-foreground">
-                {locale === "ru" ? "правильно" : "poprawnie"}
+                {correctLabel}
               </span>
             </div>
             <button
@@ -115,7 +119,7 @@ export function B1DemoQuiz({
               className="inline-flex items-center gap-1.5 rounded-full border border-border bg-surface px-4 py-2 text-sm font-semibold text-muted-foreground transition-colors hover:text-foreground"
             >
               <RotateCcw className="h-3.5 w-3.5" />
-              {locale === "ru" ? "Заново" : "Jeszcze raz"}
+              {resetLabel}
             </button>
           </>
         )}

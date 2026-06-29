@@ -57,12 +57,10 @@ export default async function CoursesPage({
         <Reveal>
           <div className="flex flex-col items-center gap-4 rounded-3xl border border-border bg-surface-muted p-8 text-center">
             <h2 className="text-xl font-bold">
-              {loc === "ru" ? "Не нашли свой курс?" : "Nie znalazłeś swojego kursu?"}
+              {c.notFoundTitle}
             </h2>
             <p className="max-w-md text-sm text-muted-foreground">
-              {loc === "ru"
-                ? "Напишите нам — подберём курс под ваши цели и уровень."
-                : "Napisz do nas — dobierzemy kurs pod Twoje cele i poziom."}
+              {c.notFoundText}
             </p>
             <a href={`/${loc}/contact`} className={buttonClasses({ size: "lg" })}>
               {c.notFoundCta}

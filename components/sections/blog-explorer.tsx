@@ -50,11 +50,12 @@ export function BlogExplorer({
   });
 
   const hasFilters = category !== "all" || query !== "";
-  const featuredLabel = locale === "ru" ? "Рекомендуем" : "Polecane";
-  const searchPlaceholder = locale === "ru" ? "Поиск..." : "Szukaj...";
-  const allLabel = locale === "ru" ? "Все" : "Wszystkie";
-  const authorLabel = locale === "ru" ? "Автор" : "Autor";
-  const emptyLabel = locale === "ru" ? "Ничего не найдено" : "Nic nie znaleziono";
+
+  const featuredLabel = dict.blog.featuredLabel;
+  const searchPlaceholder = dict.blog.searchPlaceholder;
+  const allLabel = dict.blog.allLabel;
+  const authorLabel = dict.blog.authorLabel;
+  const emptyLabel = dict.blog.noResults;
 
   return (
     <Container className="pb-12">

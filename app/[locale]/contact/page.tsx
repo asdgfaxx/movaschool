@@ -110,7 +110,7 @@ export default async function ContactPage({
               </div>
               <div className="absolute bottom-4 left-4 rounded-xl bg-surface/90 px-4 py-2 shadow-soft backdrop-blur">
                 <p className="text-sm font-bold">{info.address}</p>
-                <p className="text-xs text-muted-foreground">{loc === "ru" ? " Warszawa, Polska" : "Warszawa, Polska"}</p>
+                <p className="text-xs text-muted-foreground">Warszawa, Polska</p>
               </div>
             </div>
           </Reveal>

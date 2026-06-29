@@ -317,6 +317,10 @@ export const ru: Dictionary = {
     copiedLabel: "Скопировано!",
     tocLabel: "Содержание",
     authorLabel: "Автор",
+    featuredLabel: "Рекомендуем",
+    searchPlaceholder: "Поиск...",
+    allLabel: "Все",
+    noResults: "Ничего не найдено",
   },
   pages: {
     courses: {
@@ -336,6 +340,7 @@ export const ru: Dictionary = {
       notFoundTitle: "Ничего не найдено",
       notFoundText: "Попробуйте изменить фильтры или напишите нам — подберём курс индивидуально.",
       notFoundCta: "Связаться с нами",
+      searchPlaceholder: "Поиск...",
       groups: [
         {
           id: "general",
@@ -406,6 +411,13 @@ export const ru: Dictionary = {
     teachers: {
       title: "Наши преподаватели",
       subtitle: "Команда, которая сочетает опыт с настоящей страстью к преподаванию.",
+      searchPlaceholder: "Поиск...",
+      filterAllLanguages: "Все языки",
+      filterAllLevels: "Все уровни",
+      filterAllSpecialties: "Все специализации",
+      resultsCount: "преподавателей",
+      trialLesson: "Пробный урок",
+      noResults: "Ничего не найдено",
     },
     levelTest: {
       title: "Проверь свой уровень",
@@ -570,12 +582,17 @@ export const ru: Dictionary = {
           explanation: "После слова «dużo» используем родительный падеж мн.ч. — «przyjaciół».",
         },
       ],
+      demoCheckLabel: "Проверить",
+      demoCorrectLabel: "правильно",
+      demoResetLabel: "Заново",
       materialsTitle: "Материалы для скачивания",
       materials: [
         { name: "Вариант экзамена B1 (PDF)", description: "Полный вариант за прошлый год" },
         { name: "Ключи к ответам (PDF)", description: "Ключи с обозначением баллов" },
         { name: "Список экзаменационных выражений (PDF)", description: "30 наиболее частых оборотов" },
       ],
+      downloadLabel: "Скачать (скоро)",
+      exampleLabel: "Пример:",
       cta: "Записаться на курс B1",
     },
     business: {
