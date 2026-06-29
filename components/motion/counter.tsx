@@ -28,12 +28,10 @@ export function Counter({
   const reduce = useReducedMotion() ?? false;
   const intlLocale = LOCALE_MAP[locale ?? "pl"] ?? "pl-PL";
   const match = value.match(/\d[\d\s.,]*/);
-  const [display, setDisplay] = useState(match ? value.replace(/\d/g, "0") : value);
+  const [animatedDisplay, setAnimatedDisplay] = useState<string | null>(null);
 
   useEffect(() => {
-    if (!inView || !match) return;
-    // Reduced motion: render final value immediately (no setState in effect).
-    if (reduce) return;
+    if (!inView || !match || reduce) return;
 
     const raw = match[0];
     const hasDecimal = /[.,]/.test(raw);
@@ -54,15 +52,18 @@ export function Counter({
               maximumFractionDigits: decimals,
             })
           : Math.round(v).toLocaleString(intlLocale);
-        setDisplay(prefix + formatted + suffix);
+        setAnimatedDisplay(prefix + formatted + suffix);
+      },
+      onComplete: () => {
+        setAnimatedDisplay(null);
       },
     });
     return () => controls.stop();
-  }, [inView, reduce, value, intlLocale]); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [inView, reduce, value, intlLocale, match]);
 
   return (
     <span ref={ref} className={className}>
-      {reduce ? value : display}
+      {animatedDisplay ?? value}
     </span>
   );
 }

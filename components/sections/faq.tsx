@@ -66,7 +66,7 @@ export function Faq({ locale, dict }: { locale: string; dict: Dictionary }) {
             <Accordion items={filtered} defaultOpen={0} />
           ) : (
             <p className="py-8 text-center text-sm text-muted-foreground">
-              {locale === "ru" ? "Ничего не найдено" : "Nic nie znaleziono"}
+              {faq.noResults}
             </p>
           )}
         </div>

@@ -16,11 +16,11 @@ function ReviewCard({ r }: { r: Dictionary["reviews"]["items"][number] }) {
         <span className="text-xs font-semibold text-primary">{r.platform}</span>
       </div>
       <blockquote className="mt-4 text-sm leading-relaxed text-foreground">
-        “{r.text}”
+        &ldquo;{r.text}&rdquo;
       </blockquote>
       <figcaption className="mt-4 flex items-center gap-3 border-t border-border pt-4">
         <div className="flex h-10 w-10 items-center justify-center rounded-full bg-primary text-sm font-bold text-primary-foreground">
-          {r.name[0]}
+          {(r.name[0] ?? "?").toUpperCase()}
         </div>
         <div>
           <p className="text-sm font-bold">{r.name}</p>
@@ -64,12 +64,15 @@ export function Reviews({ dict }: { dict: Dictionary }) {
 
       <Container>
         <div className="mt-12 flex flex-col items-center justify-between gap-6 sm:flex-row">
-          <div className="group relative flex h-20 w-72 cursor-pointer items-center justify-center gap-3 overflow-hidden rounded-xl border border-border bg-surface shadow-soft">
+          <button
+            type="button"
+            className="group relative flex h-20 w-72 items-center justify-center gap-3 overflow-hidden rounded-xl border border-border bg-surface shadow-soft transition-shadow hover:shadow-clay"
+          >
             <span className="relative inline-flex h-10 w-10 items-center justify-center rounded-full bg-primary text-primary-foreground shadow-clay transition-transform duration-300 group-hover:scale-110">
               <Play className="h-4 w-4 fill-current" />
             </span>
-            <span className="text-sm font-semibold text-muted-foreground">Video отзывы</span>
-          </div>
+            <span className="text-sm font-semibold text-muted-foreground">{reviews.videoLabel}</span>
+          </button>
 
           <div className="flex items-center gap-6">
             {platforms.map((p) => (

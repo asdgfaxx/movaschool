@@ -10,12 +10,7 @@ import type { Dictionary } from "@/messages/types";
 export function BusinessTeaser({ locale, dict }: { locale: string; dict: Dictionary }) {
   const b = dict.pages.business.home;
 
-  const stats = [
-    { value: "30+", label: locale === "ru" ? "компаний" : "firm" },
-    { value: "1200+", label: locale === "ru" ? "сотрудников обучено" : "pracowników przeszkolonych" },
-    { value: "4.9", label: locale === "ru" ? "оценка обучения" : "ocena szkoleń" },
-    { value: "95%", label: locale === "ru" ? "доходимости" : "frekwencji" },
-  ];
+  const stats = b.stats;
 
   return (
     <section className="relative overflow-hidden border-y border-border bg-surface py-20">
@@ -75,7 +70,7 @@ export function BusinessTeaser({ locale, dict }: { locale: string; dict: Diction
               <div className="mb-6 flex items-center justify-between border-b border-border pb-4">
                 <div>
                   <p className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
-                    {locale === "ru" ? "Результаты B2B" : "Wyniki B2B"}
+                    {b.resultsLabel}
                   </p>
                   <p className="mt-0.5 text-sm font-bold">{dict.pages.business.processTitle}</p>
                 </div>
@@ -102,7 +97,7 @@ export function BusinessTeaser({ locale, dict }: { locale: string; dict: Diction
               {/* Industry breakdown — clean, no plastic bars */}
               <div className="mt-6">
                 <p className="mb-3 text-xs font-semibold uppercase tracking-wide text-muted-foreground">
-                  {locale === "ru" ? "По отраслям" : "Według branż"}
+                  {b.byIndustryLabel}
                 </p>
                 <div className="flex flex-col gap-3">
                   {b.progress.map((row) => (

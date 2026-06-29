@@ -104,7 +104,7 @@ export function Hero({ locale, dict }: { locale: string; dict: Dictionary }) {
               {/* Lesson progress */}
               <div className="mt-4">
                 <div className="mb-1.5 flex items-center justify-between text-[11px] font-semibold text-muted-foreground">
-                  <span>{locale === "ru" ? "Прогресс урока" : "Postęp lekcji"}</span>
+                  <span>{h.lessonProgressLabel}</span>
                   <span>12:34 / 45:00</span>
                 </div>
                 <div className="h-1.5 w-full overflow-hidden rounded-full bg-surface-muted">
@@ -115,7 +115,7 @@ export function Hero({ locale, dict }: { locale: string; dict: Dictionary }) {
               {/* Bar chart */}
               <div className="mt-4">
                 <p className="mb-2 text-[11px] font-semibold text-muted-foreground">
-                  {locale === "ru" ? "Активность в уроке" : "Aktywność na lekcji"}
+                  {h.activityLabel}
                 </p>
                 <div className="flex h-12 items-end gap-1" aria-hidden>
                   {[10, 22, 14, 30, 18, 26, 12, 28, 16, 24, 11, 20].map((bar, i) => (
@@ -150,7 +150,7 @@ export function Hero({ locale, dict }: { locale: string; dict: Dictionary }) {
               className="animate-float absolute -right-4 bottom-12 hidden rounded-xl border border-border bg-surface px-3 py-2 shadow-clay sm:block"
               style={{ animationDelay: "-3s" }}
             >
-              <Counter value={h.floatingChips[1]} locale={locale} className="text-xs font-bold text-primary" />
+              <span className="text-xs font-bold text-primary">{h.floatingChips[1]}</span>
             </div>
           </Reveal>
         </div>

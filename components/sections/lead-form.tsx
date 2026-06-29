@@ -13,7 +13,8 @@ type Status = "idle" | "sending" | "success" | "error";
 const inputBase =
   "w-full rounded-xl border bg-background px-4 py-3 text-sm outline-none transition placeholder:text-muted-foreground/60 focus:ring-2 focus:ring-ring/40";
 
-export function LeadForm({ dict }: { locale: string; dict: Dictionary }) {
+export function LeadForm({ locale, dict }: { locale: string; dict: Dictionary }) {
+  void locale;
   const t = dict.lead;
   const searchParams = useSearchParams();
   const presetCourse = searchParams.get("course") ?? "";
@@ -49,7 +50,7 @@ export function LeadForm({ dict }: { locale: string; dict: Dictionary }) {
     if (!email) errs.email = t.required;
     else if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) errs.email = t.invalidEmail;
     if (!phone) errs.phone = t.required;
-    else if (!/^[+\d\s()-]{7,}$/.test(phone)) errs.phone = t.required;
+    else if (!/^[+\d\s()-]{7,}$/.test(phone)) errs.phone = t.invalidPhone;
     if (!consent) errs.consent = t.required;
     setErrors(errs);
     if (Object.keys(errs).length > 0) return;

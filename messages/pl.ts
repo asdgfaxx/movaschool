@@ -39,6 +39,8 @@ export const pl: Dictionary = {
     levelRange: "A1 → B1",
     floatingChips: ["+200 / mies.", "B1 · 90/100"],
     platformsLabel: "Oceniani na",
+    lessonProgressLabel: "Postęp lekcji",
+    activityLabel: "Aktywność na lekcji",
   },
   stats: {
     items: [
@@ -178,6 +180,7 @@ export const pl: Dictionary = {
       { name: "Maryna", role: "Poziom A1 → A2", text: "Zaczynałam od zera. Teraz swobodnie rozmawiam w sklepie i w urzędzie.", rating: 5, platform: "Facebook" },
       { name: "Giorgi", role: "Kurs intensywny", text: "Intensywny kurs to strzał w dziesiątkę. W 6 tygodni ogromny postęp.", rating: 5, platform: "Google" },
     ],
+    videoLabel: "Video opinie",
   },
   faq: {
     kicker: "FAQ",
@@ -193,6 +196,7 @@ export const pl: Dictionary = {
     ctaText: "Napisz do nas — odpowiemy szybko i chętnie pomożemy.",
     ctaButton: "Skontaktuj się",
     searchPlaceholder: "Szukaj w pytaniach...",
+    noResults: "Nic nie znaleziono",
     items: [
       { q: "Mam już trochę wiedzy — mogę dołączyć w trakcie?", a: "Tak. Po teście poziomu dobierzemy grupę odpowiadającą Twojej aktualnej wiedzy.", category: "courses" },
       { q: "Czy mogę zmienić lektora?", a: "Tak, w ciągu pierwszych 2–3 lekcji zmiana lektora jest bezpłatna.", category: "courses" },
@@ -224,6 +228,7 @@ export const pl: Dictionary = {
     errorText: "Coś poszło nie tak. Spróbuj ponownie.",
     required: "To pole jest wymagane",
     invalidEmail: "Podaj poprawny adres e-mail",
+    invalidPhone: "Podaj poprawny numer telefonu",
     consent: "Wyrażam zgodę na przetwarzanie moich danych osobowych zgodnie z polityką prywatności.",
   },
   finalCta: {
@@ -626,6 +631,14 @@ export const pl: Dictionary = {
           { label: "Produkcja", value: 68 },
           { label: "Logistyka", value: 91 },
         ],
+        stats: [
+          { value: "30+", label: "firm", icon: "Building2" },
+          { value: "1200+", label: "pracowników przeszkolonych", icon: "Users" },
+          { value: "4.9", label: "ocena szkoleń", icon: "Star" },
+          { value: "95%", label: "frekwencji", icon: "BarChart3" },
+        ],
+        resultsLabel: "Wyniki B2B",
+        byIndustryLabel: "Według branż",
       },
     },
     legal: {

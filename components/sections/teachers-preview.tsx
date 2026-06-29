@@ -49,7 +49,7 @@ export function TeachersPreview({ locale, dict }: { locale: string; dict: Dictio
                   </p>
 
                   {/* Expandable details on hover */}
-                  <div className="mt-3 max-h-0 overflow-hidden opacity-0 transition-all duration-300 group-hover:max-h-32 group-hover:opacity-100">
+                  <div className="mt-3 max-h-0 overflow-hidden opacity-0 transition-all duration-300 group-hover:max-h-32 group-hover:opacity-100 group-focus-within:max-h-32 group-focus-within:opacity-100">
                     {t.levels && (
                       <div className="mb-2 flex flex-wrap justify-center gap-1">
                         {t.levels.map((lvl) => (

@@ -39,6 +39,8 @@ export const ru: Dictionary = {
     levelRange: "A1 → B1",
     floatingChips: ["+200 / мес.", "B1 · 90/100"],
     platformsLabel: "Нас оценивают на",
+    lessonProgressLabel: "Прогресс урока",
+    activityLabel: "Активность в уроке",
   },
   stats: {
     items: [
@@ -178,6 +180,7 @@ export const ru: Dictionary = {
       { name: "Марина", role: "Уровень A1 → A2", text: "Начинала с нуля. Теперь свободно говорю в магазине и в учреждениях.", rating: 5, platform: "Facebook" },
       { name: "Георгий", role: "Интенсивный курс", text: "Интенсив — попадание в десятку. За 6 недель огромный прогресс.", rating: 5, platform: "Google" },
     ],
+    videoLabel: "Видео-отзывы",
   },
   faq: {
     kicker: "FAQ",
@@ -193,6 +196,7 @@ export const ru: Dictionary = {
     ctaText: "Напишите нам — ответим быстро и с радостью поможем.",
     ctaButton: "Связаться с нами",
     searchPlaceholder: "Поиск по вопросам...",
+    noResults: "Ничего не найдено",
     items: [
       { q: "У меня уже есть знания — можно присоединиться по ходу?", a: "Да. После теста уровня подберём группу, соответствующую вашим текущим знаниям.", category: "courses" },
       { q: "Можно ли сменить преподавателя?", a: "Да, в течение первых 2–3 уроков смена преподавателя бесплатна.", category: "courses" },
@@ -224,6 +228,7 @@ export const ru: Dictionary = {
     errorText: "Что-то пошло не так. Попробуй ещё раз.",
     required: "Это поле обязательно",
     invalidEmail: "Укажите корректный e-mail",
+    invalidPhone: "Укажите корректный номер телефона",
     consent: "Я согласен на обработку моих персональных данных в соответствии с политикой приватности.",
   },
   finalCta: {
@@ -626,6 +631,14 @@ export const ru: Dictionary = {
           { label: "Производство", value: 68 },
           { label: "Логистика", value: 91 },
         ],
+        stats: [
+          { value: "30+", label: "компаний", icon: "Building2" },
+          { value: "1200+", label: "сотрудников обучено", icon: "Users" },
+          { value: "4.9", label: "оценка обучения", icon: "Star" },
+          { value: "95%", label: "доходимости", icon: "BarChart3" },
+        ],
+        resultsLabel: "Результаты B2B",
+        byIndustryLabel: "По отраслям",
       },
     },
     legal: {

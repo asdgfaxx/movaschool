@@ -152,6 +152,8 @@ export interface Dictionary {
     /** Floating side chips with counters/labels. */
     floatingChips: string[];
     platformsLabel: string;
+    lessonProgressLabel: string;
+    activityLabel: string;
   };
   stats: { items: Stat[] };
   how: { kicker: string; title: string; subtitle: string; items: Feature[] };
@@ -169,8 +171,8 @@ export interface Dictionary {
   teachersPreview: { kicker: string; title: string; subtitle: string; cta: string };
   teachers: Teacher[];
   steps: { kicker: string; title: string; subtitle: string; items: Step[] };
-  reviews: { kicker: string; title: string; subtitle: string; items: Review[] };
-  faq: { kicker: string; title: string; subtitle: string; items: Faq[]; categories: { id: string; label: string }[]; ctaTitle: string; ctaText: string; ctaButton: string; searchPlaceholder: string };
+  reviews: { kicker: string; title: string; subtitle: string; items: Review[]; videoLabel: string };
+  faq: { kicker: string; title: string; subtitle: string; items: Faq[]; categories: { id: string; label: string }[]; ctaTitle: string; ctaText: string; ctaButton: string; searchPlaceholder: string; noResults: string };
   lead: {
     kicker: string;
     title: string;
@@ -194,6 +196,7 @@ export interface Dictionary {
     errorText: string;
     required: string;
     invalidEmail: string;
+    invalidPhone: string;
     consent: string;
   };
   finalCta: { title: string; subtitle: string; primary: string; secondary: string; phoneLabel: string; urgencyText: string; urgencyValue: string };
@@ -325,7 +328,7 @@ export interface Dictionary {
       ctaTitle: string;
       ctaText: string;
       ctaButton: string;
-      home: { kicker: string; title: string; text: string; button: string; points: string[]; progress: { label: string; value: number }[] };
+      home: { kicker: string; title: string; text: string; button: string; points: string[]; progress: { label: string; value: number }[]; stats: Stat[]; resultsLabel: string; byIndustryLabel: string };
     };
     legal: { privacy: LegalDoc; refund: LegalDoc; terms: LegalDoc };
   };
