@@ -607,8 +607,8 @@
 - `dict.pages.legal.*`: `sections[].id` (для якорей).
 
 ### Чек-лист
-- [ ] `[LE1]` Sidebar с переключателем документов + TOC
-- [ ] `[LE1]` Типографика, effective-date, cross-links, `sections[].id`
+- [x] `[LE1]` Sidebar с переключателем документов + TOC
+- [x] `[LE1]` Типографика, effective-date, cross-links, `sections[].id`
 
 ## 2.10 B1 Exercises — `/[locale]/b1-exercises`
 

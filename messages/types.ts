@@ -109,7 +109,7 @@ export interface QuizResult {
 export interface LegalDoc {
   title: string;
   updated: string;
-  sections: { heading: string; body: string }[];
+  sections: { id: string; heading: string; body: string }[];
 }
 
 export interface Dictionary {
@@ -335,6 +335,6 @@ export interface Dictionary {
       ctaButton: string;
       home: { kicker: string; title: string; text: string; button: string; points: string[]; progress: { label: string; value: number }[]; stats: Stat[]; resultsLabel: string; byIndustryLabel: string };
     };
-    legal: { privacy: LegalDoc; refund: LegalDoc; terms: LegalDoc };
+    legal: { effectiveDateLabel: string; seeAlsoLabel: string; privacy: LegalDoc; refund: LegalDoc; terms: LegalDoc };
   };
 }
