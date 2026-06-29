@@ -306,7 +306,19 @@ export interface Dictionary {
       cta: string;
       ctaButton: string;
     };
-    b1: { title: string; subtitle: string; intro: string; topics: Feature[]; cta: string };
+    b1: {
+      kicker: string;
+      title: string;
+      subtitle: string;
+      intro: string;
+      topics: Feature[];
+      demoTitle: string;
+      demoSubtitle: string;
+      demoExercises: { question: string; options: string[]; answer: number; explanation: string }[];
+      materialsTitle: string;
+      materials: { name: string; description: string }[];
+      cta: string;
+    };
     business: {
       title: string;
       subtitle: string;
