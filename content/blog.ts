@@ -118,6 +118,7 @@ const pl: BlogPost[] = [
         paragraphs: [
           "Największe wyzwanie to samogłoski nosowe (ą, ę) oraz spółgłoski sz, cz, ż, dż. Warto ćwiczyć je na głos od pierwszych lekcji — to one najbardziej zdradzają obcy akcent.",
         ],
+        quote: { text: "Nie bój się brzmieć dziwnie na początku — to jedyna droga do brzmienia naturalnie.", cite: "Pani Małgorzata, lektorka MOVASchool" },
       },
       {
         heading: "Jak szybko zrobić postęp",
@@ -243,6 +244,7 @@ const pl: BlogPost[] = [
         paragraphs: [
           "Błędy to nie porażka, tylko etap. Mów dużo, proś o poprawki i wracaj do nagrań lekcji — postęp przyjdzie szybciej, niż myślisz.",
         ],
+        callout: { variant: "warning", text: "Największy hamulec to nie brak talentu, tylko unikanie mówienia. Mów od pierwszego dnia — nawet z błędami." },
       },
     ],
   },
@@ -344,6 +346,7 @@ const ru: BlogPost[] = [
         paragraphs: [
           "Главный вызов — носовые гласные (ą, ę) и согласные sz, cz, ż, dż. Их стоит проговаривать вслух с первых уроков — именно они сильнее всего выдают акцент.",
         ],
+        quote: { text: "Не бойся звучать странно в начале — это единственный путь к естественному звучанию.", cite: "Пани Малгожата, преподаватель MOVASchool" },
       },
       {
         heading: "Как быстро прогрессировать",
@@ -469,6 +472,7 @@ const ru: BlogPost[] = [
         paragraphs: [
           "Ошибки — это не провал, а этап. Говори много, проси исправлять и возвращайся к записям уроков — прогресс придёт быстрее, чем кажется.",
         ],
+        callout: { variant: "warning", text: "Главный тормоз — не отсутствие таланта, а избегание разговора. Говори с первого дня — даже с ошибками." },
       },
     ],
   },

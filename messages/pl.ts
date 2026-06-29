@@ -312,6 +312,11 @@ export const pl: Dictionary = {
     ctaTitle: "Chcesz uczyć się szybciej?",
     ctaText: "Zapisz się na darmową lekcję próbną i ułóżmy plan nauki pod Twój cel.",
     ctaButton: "Lekcja próbna gratis",
+    shareLabel: "Udostępnij",
+    copyLinkLabel: "Kopiuj link",
+    copiedLabel: "Skopiowano!",
+    tocLabel: "Spis treści",
+    authorLabel: "Autor",
   },
   pages: {
     courses: {

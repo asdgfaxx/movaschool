@@ -236,6 +236,11 @@ export interface Dictionary {
     ctaTitle: string;
     ctaText: string;
     ctaButton: string;
+    shareLabel: string;
+    copyLinkLabel: string;
+    copiedLabel: string;
+    tocLabel: string;
+    authorLabel: string;
   };
   pages: {
     courses: {

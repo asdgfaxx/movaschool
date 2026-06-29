@@ -312,6 +312,11 @@ export const ru: Dictionary = {
     ctaTitle: "Хочешь учиться быстрее?",
     ctaText: "Запишись на бесплатный пробный урок — составим план обучения под твою цель.",
     ctaButton: "Пробный урок бесплатно",
+    shareLabel: "Поделиться",
+    copyLinkLabel: "Копировать ссылку",
+    copiedLabel: "Скопировано!",
+    tocLabel: "Содержание",
+    authorLabel: "Автор",
   },
   pages: {
     courses: {

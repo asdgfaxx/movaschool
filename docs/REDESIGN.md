@@ -538,10 +538,10 @@
 - `content/blog.ts`: `body[]` расширить типами (`callout`, `quote`), `tags[]`, `author`.
 
 ### Чек-лист
-- [ ] `[BP1]` ScrollProgress, byline, share-кнопки
-- [ ] `[BP1]` TOC sidebar (sticky), улучшенный cover
-- [ ] `[BP2]` Body: callout/quote-блоки, расширить типы в `content/blog.ts`
-- [ ] `[BP2]` Related по тегам
+- [x] `[BP1]` ScrollProgress, byline, share-кнопки
+- [x] `[BP1]` TOC sidebar (sticky), улучшенный cover
+- [x] `[BP2]` Body: callout/quote-блоки, расширить типы в `content/blog.ts`
+- [x] `[BP2]` Related по тегам
 
 ## 2.7 Contact — `/[locale]/contact`
 
