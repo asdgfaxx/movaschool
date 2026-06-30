@@ -1,7 +1,7 @@
 "use client";
 
 import { animate, useInView, useReducedMotion } from "motion/react";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { EASE } from "@/lib/motion";
 
 const LOCALE_MAP: Record<string, string> = {
@@ -27,7 +27,9 @@ export function Counter({
   const inView = useInView(ref, { once: true, margin: "-60px" });
   const reduce = useReducedMotion() ?? false;
   const intlLocale = LOCALE_MAP[locale ?? "pl"] ?? "pl-PL";
-  const match = value.match(/\d[\d\s.,]*/);
+  // Memoize the regex match so its reference is stable across renders —
+  // otherwise it would retrigger the animation effect on every frame.
+  const match = useMemo(() => value.match(/\d[\d\s.,]*/), [value]);
   const [animatedDisplay, setAnimatedDisplay] = useState<string | null>(null);
 
   useEffect(() => {
